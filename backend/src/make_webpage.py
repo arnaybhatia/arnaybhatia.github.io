@@ -83,6 +83,14 @@ def interpolate_value(timestamps, data_times, data_values, target_time):
     )
 
 
+def get_previous_trading_day(date):
+    """Get the previous trading day for a given date"""
+    current = date
+    while current.weekday() > 4:  # Saturday = 5, Sunday = 6
+        current -= timedelta(days=1)
+    return current
+
+
 def make_index_page():
     with app.app_context():
         leaderboard_files = sorted(glob("./backend/leaderboards/in_time/*"))
@@ -91,11 +99,16 @@ def make_index_page():
         raw_timestamps = []
         raw_data = {"min": [], "max": [], "q1": [], "median": [], "q3": [], "sp500": []}
 
-        # Fetch S&P 500 data first
-        start_date = None
-        end_date = None
-        sp500 = None
-        initial_sp500_price = None
+        # Get initial S&P 500 price from August 9th, 2024 (Friday) market close
+        initial_date = datetime(2024, 8, 9, tzinfo=ZoneInfo("America/New_York"))
+        initial_date = get_previous_trading_day(initial_date)
+        sp500_initial = yf.download(
+            "SPY",
+            start=initial_date,
+            end=initial_date + timedelta(days=1),
+            interval="1d",
+        )
+        initial_sp500_price = float(sp500_initial["Close"].iloc[0])
 
         # First pass to collect timestamps
         for file in leaderboard_files:
@@ -120,16 +133,6 @@ def make_index_page():
             )
             # Convert SP500 index to Pacific time
             sp500.index = sp500.index.tz_convert("America/Los_Angeles")
-
-            # Get initial S&P 500 price, looking at exact timestamps
-            initial_sp500_price = None
-            for timestamp in sorted(sp500.index):
-                if timestamp >= start_date:
-                    initial_sp500_price = float(sp500.loc[timestamp, "Close"])
-                    break
-
-            if initial_sp500_price is None:
-                initial_sp500_price = float(sp500["Close"].iloc[0])
 
         # Second pass to collect data
         for file, timestamp in zip(leaderboard_files, raw_timestamps):
