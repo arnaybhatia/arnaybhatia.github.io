@@ -85,6 +85,8 @@
             <button class="uk-button uk-button-small series-toggle active" data-series="q1">Q1</button>
             <button class="uk-button uk-button-small series-toggle active" data-series="median">Median</button>
             <button class="uk-button uk-button-small series-toggle active" data-series="q3">Q3</button>
+            <button class="uk-button uk-button-small series-toggle active" data-series="min">Min</button>
+            <button class="uk-button uk-button-small series-toggle active" data-series="max">Max</button>
         </div>
         <div class="flex-grow chart-container" id="chartContainer">
             <div id="stockChart"></div>
@@ -334,6 +336,20 @@
         lineWidth: 2,
     });
 
+    const minSeries = chart.addAreaSeries({
+        lineColor: '#4BC0C0',
+        topColor: 'rgba(75, 192, 192, 0.4)',
+        bottomColor: 'rgba(75, 192, 192, 0.1)',
+        lineWidth: 2,
+    });
+
+    const maxSeries = chart.addAreaSeries({
+        lineColor: '#36A2EB',
+        topColor: 'rgba(54, 162, 235, 0.4)',
+        bottomColor: 'rgba(54, 162, 235, 0.1)',
+        lineWidth: 2,
+    });
+
     // Create and process data with proper timestamps
     const sp500Data = labels.map((timeStr, i) => {
         const date = new Date(timeStr);
@@ -375,16 +391,38 @@
         };
     }).filter(item => item.value !== 0);
 
+    const minData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(pstDate.getTime() / 1000),
+            value: {{ min_monies | safe }}[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    const maxData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(pstDate.getTime() / 1000),
+            value: {{ max_monies | safe }}[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
     // Sort all data arrays
     sp500Data.sort((a, b) => a.time - b.time);
     q1Data.sort((a, b) => a.time - b.time);
     medianData.sort((a, b) => a.time - b.time);
     q3Data.sort((a, b) => a.time - b.time);
+    minData.sort((a, b) => a.time - b.time);
+    maxData.sort((a, b) => a.time - b.time);
 
     sp500Series.setData(sp500Data);
     q1Series.setData(q1Data);
     medianSeries.setData(medianData);
     q3Series.setData(q3Data);
+    minSeries.setData(minData);
+    maxSeries.setData(maxData);
 
     chart.timeScale().fitContent();
 
@@ -480,7 +518,9 @@
         sp500: sp500Series,
         q1: q1Series,
         median: medianSeries,
-        q3: q3Series
+        q3: q3Series,
+        min: minSeries,
+        max: maxSeries
     };
 
     // Add toggle functionality
