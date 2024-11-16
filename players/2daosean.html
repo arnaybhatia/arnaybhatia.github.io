@@ -42,6 +42,27 @@
         api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
     })
 </script>
+        <style>
+            .mobile-menu {
+                display: none;
+            }
+            
+            @media (max-width: 768px) {
+                .mobile-menu {
+                    display: block;
+                }
+                .desktop-nav {
+                    display: none;
+                }
+                .mobile-nav {
+                    display: none;
+                    width: 100%;
+                }
+                .mobile-nav.active {
+                    display: block;
+                }
+            }
+        </style>
         
 
     </head>
@@ -49,27 +70,47 @@
     <body class="bg-background text-foreground">
         <nav class="uk-navbar-container">
             <div class="uk-container">
-                <div class="uk-navbar"
-                    style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="uk-navbar-left" style="flex: 0 1 auto;">
-                        <ul class="uk-navbar-nav">
-                            <li><a href="https://discord.gg/Gk9CwaQf9D">Discord
-                                    Server Link</a></li>
-                        </ul>
+                <div class="uk-navbar">
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu uk-button" onclick="toggleMobileMenu()">
+                        <span uk-icon="menu"></span>
+                    </button>
+
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-nav uk-navbar" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="uk-navbar-left" style="flex: 0 1 auto;">
+                            <ul class="uk-navbar-nav">
+                                <li><a href="https://discord.gg/Gk9CwaQf9D">Discord Server Link</a></li>
+                            </ul>
+                        </div>
+                        <div class="uk-navbar-center" style="flex: 0 1 auto;">
+                            <a href="/" class="uk-navbar-item uk-logo" style="font-size: 1.5rem; font-weight: bold;">LelandStocks</a>
+                        </div>
+                        <div class="uk-navbar-right" style="flex: 0 1 auto;">
+                            <ul class="uk-navbar-nav">
+                                <li><a href="/players/teachermiller.html">Teacher Miller's Profile</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="uk-navbar-center" style="flex: 0 1 auto;">
-                        <a href="/" class="uk-navbar-item uk-logo"
-                            style="font-size: 1.5rem; font-weight: bold;">LelandStocks</a>
-                    </div>
-                    <div class="uk-navbar-right" style="flex: 0 1 auto;">
-                        <ul class="uk-navbar-nav">
-                            <li><a href="/players/teachermiller.html">Teacher
-                                    Miller's Profile</a></li>
+
+                    <!-- Mobile Navigation -->
+                    <div class="mobile-nav">
+                        <ul class="uk-nav uk-nav-default">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="https://discord.gg/Gk9CwaQf9D">Discord Server Link</a></li>
+                            <li><a href="/players/teachermiller.html">Teacher Miller's Profile</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
+
+        <script>
+            function toggleMobileMenu() {
+                const mobileNav = document.querySelector('.mobile-nav');
+                mobileNav.classList.toggle('active');
+            }
+        </script>
 
         
 <h1 class="text-center text-4xl"><a href="https://www.investopedia.com/simulator/games/user-portfolio?portfolio=10447838" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" target="_blank">2daosean</a>'s Statistics</h1>
@@ -77,7 +118,7 @@
 
 
 <br>
-<p class="text-center text-xl">Last updated 19:06:13 11-15-2024</p>
+<p class="text-center text-xl">Last updated 19:08:50 11-15-2024</p>
 <br>
 <div class="flex justify-center">
     <div class="w-4/5 h-[60vh]" id="chartContainer">
