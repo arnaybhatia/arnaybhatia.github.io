@@ -99,8 +99,8 @@ def make_index_page():
         raw_timestamps = []
         raw_data = {"min": [], "max": [], "q1": [], "median": [], "q3": [], "sp500": []}
 
-        # Get initial S&P 500 price from August 9th, 2024 (Friday) market close
-        initial_date = datetime(2024, 8, 9, tzinfo=ZoneInfo("America/New_York"))
+        # Get initial S&P 500 price from August 20th, 2024 market close
+        initial_date = datetime(2024, 8, 20, tzinfo=ZoneInfo("America/New_York"))
         initial_date = get_previous_trading_day(initial_date)
         sp500_initial = yf.download(
             "SPY",
@@ -341,8 +341,8 @@ def make_user_pages(usernames):
         nvda_prices = []
         djt_prices = []
 
-        # Get initial prices from August 9th, 2024 (Friday) market close
-        initial_date = datetime(2024, 8, 9, tzinfo=ZoneInfo("America/New_York"))
+        # Get initial prices from August 20th, 2024 market close
+        initial_date = datetime(2024, 8, 20, tzinfo=ZoneInfo("America/New_York"))
         initial_date = get_previous_trading_day(initial_date)
         initial_prices = yf.download(
             ["SPY", "TQQQ", "NVDA", "DJT"],
