@@ -82,6 +82,30 @@
     .toggle-icon.active svg {
         transform: rotate(180deg);
     }
+
+    /* Add to existing styles */
+    .series-toggle {
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .series-toggle.active {
+        opacity: 1;
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        .series-toggle {
+            background-color: #333;
+            color: #fff;
+            border-color: #666;
+        }
+        
+        .series-toggle.active {
+            background-color: #444;
+            border-color: #888;
+        }
+    }
 </style>
 
 
@@ -135,13 +159,20 @@
         
 <h1 class="text-center text-2xl">Imagine if Investopedia was good at making a leaderboard</h1>
 <br>
-<p class="text-center text-xl">Last updated 01:26:05 11-16-2024</p>
+<p class="text-center text-xl">Last updated 01:29:18 11-16-2024</p>
 <br>
 <p class="text-center text-xl">Code can be found at: <a href="https://github.com/lelandstocks/lelandstocks.github.io"
         class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"> LelandStocks</a></p>
 <div class="flex flex-wrap justify-center">
     <!-- Chart Container -->
     <div class="w-full md:w-1/2 p-4 h-full md:h-auto flex flex-col"> <!-- Added flex-col -->
+        <!-- Add series toggles -->
+        <div class="flex justify-center mb-2 space-x-2">
+            <button class="uk-button uk-button-small series-toggle active" data-series="sp500">S&P 500</button>
+            <button class="uk-button uk-button-small series-toggle active" data-series="q1">Q1</button>
+            <button class="uk-button uk-button-small series-toggle active" data-series="median">Median</button>
+            <button class="uk-button uk-button-small series-toggle active" data-series="q3">Q3</button>
+        </div>
         <div class="flex-grow chart-container" id="chartContainer">
             <div id="stockChart"></div>
         </div>
@@ -5690,6 +5721,26 @@
                 // Toggle current section
                 content.classList.toggle('active');
                 icon.classList.toggle('active');
+            });
+        });
+    });
+
+    // Store series in an object for easy access
+    const series = {
+        sp500: sp500Series,
+        q1: q1Series,
+        median: medianSeries,
+        q3: q3Series
+    };
+
+    // Add toggle functionality
+    document.querySelectorAll('.series-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const seriesName = button.dataset.series;
+            button.classList.toggle('active');
+            const isVisible = button.classList.contains('active');
+            series[seriesName].applyOptions({
+                visible: isVisible
             });
         });
     });
