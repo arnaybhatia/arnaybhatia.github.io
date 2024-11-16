@@ -110,17 +110,47 @@
         }
         
         .mobile-details {
-            display: block;
+            display: table-cell;
+        }
+
+        /* New mobile table styles */
+        .mobile-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 8px 0;
+        }
+
+        .mobile-cell {
+            padding: 0 4px;
+        }
+
+        .rank-cell {
+            width: 15%;
+        }
+
+        .account-cell {
+            width: 45%;
+        }
+
+        .details-cell {
+            width: 40%;
+        }
+
+        .collapsible-header {
+            white-space: nowrap;
+            padding: 6px 12px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            font-size: 0.9em;
         }
     }
 
-    @media (min-width: 769px) {
-        .mobile-details {
-            display: none !important;
-        }
-        
-        .desktop-only {
-            display: table-cell;
+    @media (prefers-color-scheme: dark) {
+        @media (max-width: 768px) {
+            .collapsible-header {
+                background-color: #2d2d2d;
+            }
         }
     }
 </style>
@@ -218,23 +248,23 @@
 
 <table class="uk-table uk-table-striped uk-table-responsive" id="rankings">
     <tr>
-        <th>Rank</th>
-        <th>Account</th>
+        <th class="rank-cell">Rank</th>
+        <th class="account-cell">Account</th>
         <th class="desktop-only">Account Value</th>
         <th class="desktop-only">Stocks Invested</th>
         <th class="desktop-only">Z-Score</th>
-        <th class="mobile-details">Details</th>
+        <th class="details-cell mobile-details">Details</th>
     </tr>
     {% for row in row_data %}
-    <tr {% if "teachermiller" in row %}class="font-bold"{% endif %}>
-        <td>{{ row[0] }}</td>
-        <td>{{ row[1] | safe }}</td>
+    <tr class="mobile-row" {% if "teachermiller" in row %}class="font-bold"{% endif %}>
+        <td class="mobile-cell rank-cell">{{ row[0] }}</td>
+        <td class="mobile-cell account-cell">{{ row[1] | safe }}</td>
         <td class="desktop-only">{{ row[2] }}</td>
         <td class="desktop-only">{{ row[3] }}</td>
         <td class="desktop-only">{{ row[4] }}</td>
-        <td class="mobile-details">
+        <td class="mobile-cell details-cell mobile-details">
             <div class="collapsible-header">
-                <span class="toggle-icon">View Details</span>
+                <span class="toggle-icon">Details</span>
             </div>
             <div class="collapsible-content">
                 <p><strong>Account Value:</strong> {{ row[2] }}</p>
