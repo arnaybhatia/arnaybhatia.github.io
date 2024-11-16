@@ -1,0 +1,393 @@
+{% extends "base.html" %}
+
+{% block title %}Player Statistics{% endblock %}
+
+{% block content %}
+<h1 class="text-center text-4xl"><a href="{{ investopedia_link }}"
+        class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        target="_blank">{{ player_name }}</a>'s Statistics</h1>
+
+{% if player_name == 'teachermiller' %}
+<div class="flex justify-center mt-4">
+    <img src="/static/miller.jpg" alt="Mr. Miller"
+        class="w-48 h-48 rounded-full object-cover">
+</div>
+{% endif %}
+
+<br>
+<p class="text-center text-xl">Last updated {{ update_time }}</p>
+<br>
+<div class="flex justify-center">
+    <div class="w-4/5 h-[55vh]" id="chartContainer">
+        <!-- Replace buttons with clickable legend -->
+        <div class="legend flex justify-center mb-2 space-x-4">
+            <div class="legend-item cursor-pointer active"
+                data-series="portfolio">
+                <span class="legend-color"
+                    style="background: rgb(75, 192, 192)"></span>Portfolio
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="sp500">
+                <span class="legend-color"
+                    style="background: rgb(192, 75, 75)"></span>S&P 500
+            </div>
+            <div class="legend-item cursor-pointer" data-series="tqqq">
+                <span class="legend-color"
+                    style="background: rgb(75, 75, 192)"></span>TQQQ
+            </div>
+            <div class="legend-item cursor-pointer" data-series="nvda">
+                <span class="legend-color"
+                    style="background: rgb(0, 192, 0)"></span>NVDA
+            </div>
+            <div class="legend-item cursor-pointer" data-series="djt">
+                <span class="legend-color"
+                    style="background: rgb(192, 192, 0)"></span>DJT
+            </div>
+        </div>
+        <div id="playerChart"></div>
+    </div>
+</div>
+<div class="text-center mt-6 pb-6 space-x-2">
+    <button class="uk-button uk-button-default px-4 py-2" id="resetZoom">Reset Zoom</button>
+    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="1">1D</button>
+    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="7">1W</button>
+    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="30">1M</button>
+    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="365">1Y</button>
+</div>
+
+<!-- Add stocks table -->
+<div class="flex justify-center mt-10">
+    <div class="w-4/5">
+        <h2 class="text-2xl mb-4">Current Stock Holdings</h2>
+        <table class="w-full border-collapse table-auto">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="border px-4 py-2">Stock Ticker</th>
+                    <th class="border px-4 py-2">Money Invested</th>
+                    <th class="border px-4 py-2">Overall % Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in player_stocks %}
+                <tr class="hover:bg-gray-50">
+                    <td class="border px-4 py-2 text-center">{{ stock[0] }}</td>
+                    <td class="border px-4 py-2 text-center">${{
+                        '{:,.2f}'.format(stock[1]) }}</td>
+                    <td class="border px-4 py-2 text-center
+                        {% if stock[2] >= 0 %}text-green-600{% else %}text-red-600{% endif %}">
+                        {{ '{:+.2f}'.format(stock[2]) }}%
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function convertTZ(date, tzString) {
+        return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+    }
+
+    function isDarkMode() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function getChartColors() {
+        return {
+            background: isDarkMode() ? '#1a1a1a' : '#ffffff',
+            text: isDarkMode() ? '#ffffff' : '#333333',
+            grid: isDarkMode() ? '#333333' : '#f0f0f0',
+            border: isDarkMode() ? '#4a4a4a' : '#d1d4dc'
+        };
+    }
+
+    function updateChartColors() {
+        const colors = getChartColors();
+        chart.applyOptions({
+            layout: {
+                background: { type: 'solid', color: colors.background },
+                textColor: colors.text,
+            },
+            grid: {
+                vertLines: { color: colors.grid },
+                horzLines: { color: colors.grid },
+            },
+            timeScale: {
+                borderColor: colors.border,
+            },
+            rightPriceScale: {
+                borderColor: colors.border,
+            }
+        });
+    }
+
+    const chartContainer = document.getElementById('chartContainer');
+    const colors = getChartColors();
+    const chartOptions = {
+        width: chartContainer.offsetWidth,
+        height: chartContainer.offsetHeight,
+        layout: {
+            background: { type: 'solid', color: colors.background },
+            textColor: colors.text,
+            fontSize: 12,
+        },
+        grid: {
+            vertLines: { color: colors.grid },
+            horzLines: { color: colors.grid },
+        },
+        timeScale: {
+            timeVisible: true,
+            borderColor: colors.border,
+            rightOffset: 5,
+            barSpacing: 10,
+            fixLeftEdge: true,
+            fixRightEdge: true,
+            secondsVisible: false,
+            timeZone: 'America/Los_Angeles',  // Add this line
+        },
+        rightPriceScale: {
+            borderColor: colors.border,
+            autoScale: true,
+        },
+        watermark: {
+            color: 'rgba(0, 0, 0, 0)',
+        },
+        leftPriceScale: {
+            visible: false,
+        },
+        handleScale: {
+            mouseWheel: true,
+            pinch: true,
+            axisPressedMouseMove: true,
+        },
+        handleScroll: {
+            mouseWheel: true,
+            pressedMouseMove: true,
+            horzTouchDrag: true,
+            vertTouchDrag: true,
+        },
+    };
+
+    // Add color scheme change listener
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateChartColors);
+
+    const chart = LightweightCharts.createChart(document.getElementById('playerChart'), chartOptions);
+
+    const portfolioSeries = chart.addAreaSeries({
+        lineColor: 'rgb(75, 192, 192)',
+        topColor: 'rgba(75, 192, 192, 0.4)',
+        bottomColor: 'rgba(75, 192, 192, 0.1)',
+        lineWidth: 2,
+    });
+
+    const sp500Series = chart.addAreaSeries({
+        lineColor: 'rgb(192, 75, 75)',
+        topColor: 'rgba(192, 75, 75, 0.4)',
+        bottomColor: 'rgba(192, 75, 75, 0.1)',
+        lineWidth: 2,
+    });
+
+    const tqqqSeries = chart.addAreaSeries({
+        lineColor: 'rgb(75, 75, 192)',
+        topColor: 'rgba(75, 75, 192, 0.4)',
+        bottomColor: 'rgba(75, 75, 192, 0.1)',
+        lineWidth: 2,
+        visible: false,  // Add this line
+    });
+
+    const nvdaSeries = chart.addAreaSeries({
+        lineColor: 'rgb(0, 192, 0)',
+        topColor: 'rgba(0, 192, 0, 0.4)',
+        bottomColor: 'rgba(0, 192, 0, 0.1)',
+        lineWidth: 2,
+        visible: false,  // Add this line
+    });
+
+    const djtSeries = chart.addAreaSeries({
+        lineColor: 'rgb(192, 192, 0)',
+        topColor: 'rgba(192, 192, 0, 0.4)',
+        bottomColor: 'rgba(192, 192, 0, 0.1)',
+        lineWidth: 2,
+        visible: false,  // Add this line
+    });
+
+    const labels = {{ labels | safe }};
+    const money = {{ player_money | safe }};
+    const sp500Data = {{ sp500_prices | safe }};
+    const tqqqData = {{ tqqq_prices | safe }};
+    const nvdaData = {{ nvda_prices | safe }};
+    const djtData = {{ djt_prices | safe }};
+
+    const portfolioData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: money[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    const sp500ChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: sp500Data[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    const tqqqChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: tqqqData[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    const nvdaChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: nvdaData[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    const djtChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: djtData[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    // Sort data by timestamp
+    portfolioData.sort((a, b) => a.time - b.time);
+    sp500ChartData.sort((a, b) => a.time - b.time);
+    tqqqChartData.sort((a, b) => a.time - b.time);
+    nvdaChartData.sort((a, b) => a.time - b.time);
+    djtChartData.sort((a, b) => a.time - b.time);
+
+    portfolioSeries.setData(portfolioData);
+    sp500Series.setData(sp500ChartData);
+    tqqqSeries.setData(tqqqChartData);
+    nvdaSeries.setData(nvdaChartData);
+    djtSeries.setData(djtChartData);
+
+    chart.timeScale().fitContent();
+
+    window.addEventListener('resize', () => {
+        chart.applyOptions({
+            width: chartContainer.offsetWidth,
+            height: chartContainer.offsetHeight
+        });
+    });
+
+    // Add reset zoom button functionality
+    document.getElementById('resetZoom').addEventListener('click', () => {
+        chart.timeScale().fitContent();
+        chart.priceScale('right').applyOptions({
+            autoScale: true
+        });
+    });
+
+    // Add time range functionality
+    document.querySelectorAll('.time-range').forEach(button => {
+        button.addEventListener('click', () => {
+            const days = parseInt(button.dataset.days);
+            const now = Math.floor(Date.now() / 1000);
+            const start = now - (days * 24 * 60 * 60);
+            
+            chart.timeScale().setVisibleRange({
+                from: start,
+                to: now,
+            });
+        });
+    });
+
+    // Store series in an object for easy access
+    const series = {
+        portfolio: portfolioSeries,
+        sp500: sp500Series,
+        tqqq: tqqqSeries,
+        nvda: nvdaSeries,
+        djt: djtSeries
+    };
+
+    // Replace button toggle functionality with legend toggle
+    document.querySelectorAll('.legend-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const seriesName = item.dataset.series;
+            item.classList.toggle('active');
+            const isVisible = item.classList.contains('active');
+            series[seriesName].applyOptions({
+                visible: isVisible
+            });
+        });
+    });
+
+    // Initial fit content
+    chart.timeScale().fitContent();
+</script>
+
+<style>
+    .series-toggle {
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .series-toggle.active {
+        opacity: 1;
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        .series-toggle {
+            background-color: #333;
+            color: #fff;
+            border-color: #666;
+        }
+        
+        .series-toggle.active {
+            background-color: #444;
+            border-color: #888;
+        }
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .legend-item.active {
+        opacity: 1;
+    }
+    
+    .legend-color {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+        border-radius: 2px;
+    }
+    
+    /* Dark mode support for legend */
+    @media (prefers-color-scheme: dark) {
+        .legend-item {
+            color: #fff;
+        }
+    }
+</style>
+{% endblock %}
