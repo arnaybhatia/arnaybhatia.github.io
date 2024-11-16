@@ -27,13 +27,19 @@
     }
 
     .toggle-icon::after {
-        content: '▼';
-        margin-left: 4px;
-        display: inline-block;
-        transition: transform 0.3s ease;
+        content: none;  /* Remove the triangle */
     }
 
-    .toggle-icon.active::after {
+    .toggle-icon svg {
+        width: 12px;
+        height: 12px;
+        margin-left: 4px;
+        transition: transform 0.3s ease;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .toggle-icon.active svg {
         transform: rotate(180deg);
     }
 </style>
@@ -150,7 +156,12 @@
                         <span>{{ row[1] | safe }}</span>
                     </div>
                     <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
-                        <span class="toggle-icon">Details</span>
+                        <span class="toggle-icon flex items-center">
+                            Details
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
