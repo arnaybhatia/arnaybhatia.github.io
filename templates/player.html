@@ -199,12 +199,24 @@
         };
     }).filter(item => item.value !== 0);
 
+    const tqqqChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: tqqqData[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
     // Sort data by timestamp
     portfolioData.sort((a, b) => a.time - b.time);
     sp500ChartData.sort((a, b) => a.time - b.time);
+    tqqqChartData.sort((a, b) => a.time - b.time);
 
     portfolioSeries.setData(portfolioData);
     sp500Series.setData(sp500ChartData);
+    tqqqSeries.setData(tqqqChartData);
 
     chart.timeScale().fitContent();
 
