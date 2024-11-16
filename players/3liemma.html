@@ -92,40 +92,55 @@
         </script>
 
         
-<h1 class="text-center text-4xl"><a href="https://www.investopedia.com/simulator/games/user-portfolio?portfolio=10445331" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" target="_blank">3liemma</a>'s Statistics</h1>
+<h1 class="text-center text-4xl"><a href="https://www.investopedia.com/simulator/games/user-portfolio?portfolio=10445331"
+        class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+        target="_blank">3liemma</a>'s Statistics</h1>
 
 
 
 <br>
-<p class="text-center text-xl">Last updated 02:14:26 11-16-2024</p>
+<p class="text-center text-xl">Last updated 02:16:17 11-16-2024</p>
 <br>
 <div class="flex justify-center">
     <div class="w-4/5 h-[60vh]" id="chartContainer">
-        <!-- Add series toggles -->
-        <div class="flex justify-center mb-4 space-x-2">
-            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="portfolio">Portfolio</button>
-            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="sp500">S&P 500</button>
-            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="tqqq">TQQQ</button>
-            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="nvda">NVDA</button>
-            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="djt">DJT</button>
-        </div>
-        <!-- Add legend -->
+        <!-- Replace buttons with clickable legend -->
         <div class="legend flex justify-center mb-2 space-x-4">
-            <div class="legend-item"><span class="legend-color" style="background: rgb(75, 192, 192)"></span>Portfolio</div>
-            <div class="legend-item"><span class="legend-color" style="background: rgb(192, 75, 75)"></span>S&P 500</div>
-            <div class="legend-item"><span class="legend-color" style="background: rgb(75, 75, 192)"></span>TQQQ</div>
-            <div class="legend-item"><span class="legend-color" style="background: rgb(0, 192, 0)"></span>NVDA</div>
-            <div class="legend-item"><span class="legend-color" style="background: rgb(192, 192, 0)"></span>DJT</div>
+            <div class="legend-item cursor-pointer active"
+                data-series="portfolio">
+                <span class="legend-color"
+                    style="background: rgb(75, 192, 192)"></span>Portfolio
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="sp500">
+                <span class="legend-color"
+                    style="background: rgb(192, 75, 75)"></span>S&P 500
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="tqqq">
+                <span class="legend-color"
+                    style="background: rgb(75, 75, 192)"></span>TQQQ
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="nvda">
+                <span class="legend-color"
+                    style="background: rgb(0, 192, 0)"></span>NVDA
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="djt">
+                <span class="legend-color"
+                    style="background: rgb(192, 192, 0)"></span>DJT
+            </div>
         </div>
         <div id="playerChart"></div>
     </div>
 </div>
 <div class="text-center mt-2 space-x-2">
-    <button class="uk-button uk-button-default" id="resetZoom">Reset Zoom</button>
-    <button class="uk-button uk-button-default time-range" data-days="1">1D</button>
-    <button class="uk-button uk-button-default time-range" data-days="7">1W</button>
-    <button class="uk-button uk-button-default time-range" data-days="30">1M</button>
-    <button class="uk-button uk-button-default time-range" data-days="365">1Y</button>
+    <button class="uk-button uk-button-default" id="resetZoom">Reset
+        Zoom</button>
+    <button class="uk-button uk-button-default time-range"
+        data-days="1">1D</button>
+    <button class="uk-button uk-button-default time-range"
+        data-days="7">1W</button>
+    <button class="uk-button uk-button-default time-range"
+        data-days="30">1M</button>
+    <button class="uk-button uk-button-default time-range"
+        data-days="365">1Y</button>
 </div>
 
 <!-- Add stocks table -->
@@ -393,12 +408,12 @@
         djt: djtSeries
     };
 
-    // Add toggle functionality
-    document.querySelectorAll('.series-toggle').forEach(button => {
-        button.addEventListener('click', () => {
-            const seriesName = button.dataset.series;
-            button.classList.toggle('active');
-            const isVisible = button.classList.contains('active');
+    // Replace button toggle functionality with legend toggle
+    document.querySelectorAll('.legend-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const seriesName = item.dataset.series;
+            item.classList.toggle('active');
+            const isVisible = item.classList.contains('active');
             series[seriesName].applyOptions({
                 visible: isVisible
             });
@@ -437,6 +452,12 @@
         display: flex;
         align-items: center;
         font-size: 12px;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .legend-item.active {
+        opacity: 1;
     }
     
     .legend-color {
