@@ -66,6 +66,27 @@
             border-color: #888;
         }
     }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
+    
+    .legend-color {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+        border-radius: 2px;
+    }
+    
+    /* Dark mode support for legend */
+    @media (prefers-color-scheme: dark) {
+        .legend-item {
+            color: #fff;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -87,6 +108,15 @@
             <button class="uk-button uk-button-small series-toggle active" data-series="q3">Q3</button>
             <button class="uk-button uk-button-small series-toggle active" data-series="min">Min</button>
             <button class="uk-button uk-button-small series-toggle active" data-series="max">Max</button>
+        </div>
+        <!-- Add legend -->
+        <div class="legend flex justify-center mb-2 space-x-4">
+            <div class="legend-item"><span class="legend-color" style="background: #FF6384"></span>S&P 500</div>
+            <div class="legend-item"><span class="legend-color" style="background: #9966FF"></span>Q1</div>
+            <div class="legend-item"><span class="legend-color" style="background: #FFCE56"></span>Median</div>
+            <div class="legend-item"><span class="legend-color" style="background: #FF9F40"></span>Q3</div>
+            <div class="legend-item"><span class="legend-color" style="background: #4BC0C0"></span>Min</div>
+            <div class="legend-item"><span class="legend-color" style="background: #36A2EB"></span>Max</div>
         </div>
         <div class="flex-grow chart-container" id="chartContainer">
             <div id="stockChart"></div>
