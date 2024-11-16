@@ -59,10 +59,22 @@
 
     .collapsible-content {
         display: none;
+        transition: all 0.3s ease-in-out;
     }
 
     .collapsible-content.active {
         display: block;
+    }
+
+    .toggle-icon::after {
+        content: '▼';
+        margin-left: 4px;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .toggle-icon.active::after {
+        transform: rotate(180deg);
     }
 </style>
 
@@ -117,7 +129,7 @@
         
 <h1 class="text-center text-2xl">Imagine if Investopedia was good at making a leaderboard</h1>
 <br>
-<p class="text-center text-xl">Last updated 01:15:08 11-16-2024</p>
+<p class="text-center text-xl">Last updated 01:16:50 11-16-2024</p>
 <br>
 <p class="text-center text-xl">Code can be found at: <a href="https://github.com/lelandstocks/lelandstocks.github.io"
         class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"> LelandStocks</a></p>
@@ -1399,7 +1411,7 @@
     </div>
 </div>
 
-<table class="w-full">
+<table class="w-full" id="rankings">
     <thead class="hidden md:table-header-group">
         <tr>
             <th class="px-4 py-2">Rank</th>
@@ -1419,8 +1431,8 @@
                         <span class="text-sm">1</span>
                         <span><a href="/players/1enriquezmario.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1enriquezmario" target="_blank">1enriquezmario</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1445,8 +1457,8 @@
                         <span class="text-sm">2</span>
                         <span><a href="/players/1paliwalpinak.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1paliwalpinak" target="_blank">1paliwalpinak</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1471,8 +1483,8 @@
                         <span class="text-sm">3</span>
                         <span><a href="/players/2continichris.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2continichris" target="_blank">2continichris</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1497,8 +1509,8 @@
                         <span class="text-sm">4</span>
                         <span><a href="/players/miatarabichi.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 miatarabichi" target="_blank">miatarabichi</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1523,8 +1535,8 @@
                         <span class="text-sm">5</span>
                         <span><a href="/players/unknovus.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 unknovus" target="_blank">unknovus</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1549,8 +1561,8 @@
                         <span class="text-sm">6</span>
                         <span><a href="/players/5bisharajeries.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5bisharajeries" target="_blank">5bisharajeries</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1575,8 +1587,8 @@
                         <span class="text-sm">7</span>
                         <span><a href="/players/6ubrychfilip_.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6ubrychfilip_" target="_blank">6ubrychfilip_</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1601,8 +1613,8 @@
                         <span class="text-sm">8</span>
                         <span><a href="/players/1raimondiluke.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1raimondiluke" target="_blank">1raimondiluke</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1627,8 +1639,8 @@
                         <span class="text-sm">9</span>
                         <span><a href="/players/3sudharsanshrivas.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3sudharsanshrivas" target="_blank">3sudharsanshrivas</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1653,8 +1665,8 @@
                         <span class="text-sm">10</span>
                         <span><a href="/players/5nguyenethan.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5nguyenethan" target="_blank">5nguyenethan</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1679,8 +1691,8 @@
                         <span class="text-sm">11</span>
                         <span><a href="/players/2petergeorge.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2petergeorge" target="_blank">2petergeorge</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1705,8 +1717,8 @@
                         <span class="text-sm">12</span>
                         <span><a href="/players/3bergantaro.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3bergantaro" target="_blank">3bergantaro</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1731,8 +1743,8 @@
                         <span class="text-sm">13</span>
                         <span><a href="/players/5lucaslloyd.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5lucaslloyd" target="_blank">5lucaslloyd</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1757,8 +1769,8 @@
                         <span class="text-sm">14</span>
                         <span><a href="/players/6xusophie.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6xusophie" target="_blank">6xusophie</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1783,8 +1795,8 @@
                         <span class="text-sm">15</span>
                         <span><a href="/players/3jubertcolin.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3jubertcolin" target="_blank">3jubertcolin</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1809,8 +1821,8 @@
                         <span class="text-sm">16</span>
                         <span><a href="/players/3lustephanie.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3lustephanie" target="_blank">3lustephanie</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1835,8 +1847,8 @@
                         <span class="text-sm">17</span>
                         <span><a href="/players/3baradlaydaniel.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3baradlaydaniel" target="_blank">3baradlaydaniel</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1861,8 +1873,8 @@
                         <span class="text-sm">18</span>
                         <span><a href="/players/6hernandezbrady.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6hernandezbrady" target="_blank">6hernandezbrady</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1887,8 +1899,8 @@
                         <span class="text-sm">19</span>
                         <span><a href="/players/3tomaszewskiadrian.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3tomaszewskiadrian" target="_blank">3tomaszewskiadrian</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1913,8 +1925,8 @@
                         <span class="text-sm">20</span>
                         <span><a href="/players/brandens.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 brandens" target="_blank">brandens</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1939,8 +1951,8 @@
                         <span class="text-sm">21</span>
                         <span><a href="/players/6sophiamovassate.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6sophiamovassate" target="_blank">6sophiamovassate</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1965,8 +1977,8 @@
                         <span class="text-sm">22</span>
                         <span><a href="/players/2dersecamren.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2dersecamren" target="_blank">2dersecamren</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -1991,8 +2003,8 @@
                         <span class="text-sm">23</span>
                         <span><a href="/players/2santosshin.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2santosshin" target="_blank">2santosshin</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2017,8 +2029,8 @@
                         <span class="text-sm">24</span>
                         <span><a href="/players/3patilrohi.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3patilrohi" target="_blank">3patilrohi</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2043,8 +2055,8 @@
                         <span class="text-sm">25</span>
                         <span><a href="/players/5zhounatalie.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5zhounatalie" target="_blank">5zhounatalie</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2069,8 +2081,8 @@
                         <span class="text-sm">26</span>
                         <span><a href="/players/5wangkyan.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5wangkyan" target="_blank">5wangkyan</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2095,8 +2107,8 @@
                         <span class="text-sm">27</span>
                         <span><a href="/players/2laumei.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2laumei" target="_blank">2laumei</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2121,8 +2133,8 @@
                         <span class="text-sm">28</span>
                         <span><a href="/players/2gibsonjacob.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2gibsonjacob" target="_blank">2gibsonjacob</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2147,8 +2159,8 @@
                         <span class="text-sm">29</span>
                         <span><a href="/players/2mirilily.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2mirilily" target="_blank">2mirilily</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2173,8 +2185,8 @@
                         <span class="text-sm">30</span>
                         <span><a href="/players/6saishyamrugoobur.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6saishyamrugoobur" target="_blank">6saishyamrugoobur</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2199,8 +2211,8 @@
                         <span class="text-sm">31</span>
                         <span><a href="/players/3bhatiaarnay.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3bhatiaarnay" target="_blank">3bhatiaarnay</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2225,8 +2237,8 @@
                         <span class="text-sm">32</span>
                         <span><a href="/players/2phamjinny.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2phamjinny" target="_blank">2phamjinny</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2251,8 +2263,8 @@
                         <span class="text-sm">33</span>
                         <span><a href="/players/5jianglin.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5jianglin" target="_blank">5jianglin</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2277,8 +2289,8 @@
                         <span class="text-sm">34</span>
                         <span><a href="/players/2chenkhai.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2chenkhai" target="_blank">2chenkhai</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2303,8 +2315,8 @@
                         <span class="text-sm">35</span>
                         <span><a href="/players/2nguyenthien.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2nguyenthien" target="_blank">2nguyenthien</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2329,8 +2341,8 @@
                         <span class="text-sm">36</span>
                         <span><a href="/players/5mehtasuhani.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5mehtasuhani" target="_blank">5mehtasuhani</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2355,8 +2367,8 @@
                         <span class="text-sm">37</span>
                         <span><a href="/players/5tingjanele.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5tingjanele" target="_blank">5tingjanele</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2381,8 +2393,8 @@
                         <span class="text-sm">38</span>
                         <span><a href="/players/5sheaffermalia.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5sheaffermalia" target="_blank">5sheaffermalia</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2407,8 +2419,8 @@
                         <span class="text-sm">39</span>
                         <span><a href="/players/5garciaocran.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5garciaocran" target="_blank">5garciaocran</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2433,8 +2445,8 @@
                         <span class="text-sm">40</span>
                         <span><a href="/players/5yoshioka-meonskebradley.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5yoshioka-meonskebradley" target="_blank">5yoshioka-meonskebradley</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2459,8 +2471,8 @@
                         <span class="text-sm">41</span>
                         <span><a href="/players/3liuallen.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3liuallen" target="_blank">3liuallen</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2485,8 +2497,8 @@
                         <span class="text-sm">42</span>
                         <span><a href="/players/1nguyenkatie.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1nguyenkatie" target="_blank">1nguyenkatie</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2511,8 +2523,8 @@
                         <span class="text-sm">43</span>
                         <span><a href="/players/5polakella.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5polakella" target="_blank">5polakella</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2537,8 +2549,8 @@
                         <span class="text-sm">44</span>
                         <span><a href="/players/helllloo11.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 helllloo11" target="_blank">helllloo11</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2563,8 +2575,8 @@
                         <span class="text-sm">45</span>
                         <span><a href="/players/2gaudaanvi.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2gaudaanvi" target="_blank">2gaudaanvi</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2589,8 +2601,8 @@
                         <span class="text-sm">46</span>
                         <span><a href="/players/2sepelucas.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2sepelucas" target="_blank">2sepelucas</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2615,8 +2627,8 @@
                         <span class="text-sm">47</span>
                         <span><a href="/players/1phamriley.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1phamriley" target="_blank">1phamriley</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2641,8 +2653,8 @@
                         <span class="text-sm">48</span>
                         <span><a href="/players/5xieanthony.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5xieanthony" target="_blank">5xieanthony</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2667,8 +2679,8 @@
                         <span class="text-sm">49</span>
                         <span><a href="/players/6nagpurwalafayezah.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6nagpurwalafayezah" target="_blank">6nagpurwalafayezah</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2693,8 +2705,8 @@
                         <span class="text-sm">50</span>
                         <span><a href="/players/1elyasiarian.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1elyasiarian" target="_blank">1elyasiarian</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2719,8 +2731,8 @@
                         <span class="text-sm">51</span>
                         <span><a href="/players/kayanshah.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 kayanshah" target="_blank">kayanshah</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2745,8 +2757,8 @@
                         <span class="text-sm">52</span>
                         <span><a href="/players/1anandnikita.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1anandnikita" target="_blank">1anandnikita</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2771,8 +2783,8 @@
                         <span class="text-sm">53</span>
                         <span><a href="/players/5wangwei.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5wangwei" target="_blank">5wangwei</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2797,8 +2809,8 @@
                         <span class="text-sm">54</span>
                         <span><a href="/players/p3_horvath_levente.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 p3_horvath_levente" target="_blank">p3_horvath_levente</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2823,8 +2835,8 @@
                         <span class="text-sm">55</span>
                         <span><a href="/players/3leesienna.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3leesienna" target="_blank">3leesienna</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2849,8 +2861,8 @@
                         <span class="text-sm">56</span>
                         <span><a href="/players/5nguyendaphne.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5nguyendaphne" target="_blank">5nguyendaphne</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2875,8 +2887,8 @@
                         <span class="text-sm">57</span>
                         <span><a href="/players/3liemma.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3liemma" target="_blank">3liemma</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2901,8 +2913,8 @@
                         <span class="text-sm">58</span>
                         <span><a href="/players/teachermiller.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 teachermiller" target="_blank">teachermiller</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2927,8 +2939,8 @@
                         <span class="text-sm">59</span>
                         <span><a href="/players/6cardenasdayanara.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6cardenasdayanara" target="_blank">6cardenasdayanara</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2953,8 +2965,8 @@
                         <span class="text-sm">60</span>
                         <span><a href="/players/2habibvandarion.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2habibvandarion" target="_blank">2habibvandarion</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -2979,8 +2991,8 @@
                         <span class="text-sm">61</span>
                         <span><a href="/players/3hinholivia.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3hinholivia" target="_blank">3hinholivia</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3005,8 +3017,8 @@
                         <span class="text-sm">62</span>
                         <span><a href="/players/6luosicheng.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6luosicheng" target="_blank">6luosicheng</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3031,8 +3043,8 @@
                         <span class="text-sm">63</span>
                         <span><a href="/players/3koushikpreksha.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3koushikpreksha" target="_blank">3koushikpreksha</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3057,8 +3069,8 @@
                         <span class="text-sm">64</span>
                         <span><a href="/players/2tavakoliariana.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2tavakoliariana" target="_blank">2tavakoliariana</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3083,8 +3095,8 @@
                         <span class="text-sm">65</span>
                         <span><a href="/players/5gollamudinikhil.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5gollamudinikhil" target="_blank">5gollamudinikhil</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3109,8 +3121,8 @@
                         <span class="text-sm">66</span>
                         <span><a href="/players/3knightizabella.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3knightizabella" target="_blank">3knightizabella</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3135,8 +3147,8 @@
                         <span class="text-sm">67</span>
                         <span><a href="/players/1parkcaleb.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1parkcaleb" target="_blank">1parkcaleb</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3161,8 +3173,8 @@
                         <span class="text-sm">68</span>
                         <span><a href="/players/1ngohailey.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1ngohailey" target="_blank">1ngohailey</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3187,8 +3199,8 @@
                         <span class="text-sm">69</span>
                         <span><a href="/players/1mungaiayanna.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1mungaiayanna" target="_blank">1mungaiayanna</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3213,8 +3225,8 @@
                         <span class="text-sm">70</span>
                         <span><a href="/players/1buijason.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1buijason" target="_blank">1buijason</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3239,8 +3251,8 @@
                         <span class="text-sm">71</span>
                         <span><a href="/players/2daosean.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2daosean" target="_blank">2daosean</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3265,8 +3277,8 @@
                         <span class="text-sm">72</span>
                         <span><a href="/players/5vajirkararnav.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5vajirkararnav" target="_blank">5vajirkararnav</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3291,8 +3303,8 @@
                         <span class="text-sm">73</span>
                         <span><a href="/players/2chobanianbella.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2chobanianbella" target="_blank">2chobanianbella</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3317,8 +3329,8 @@
                         <span class="text-sm">74</span>
                         <span><a href="/players/2ambrizcaden.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2ambrizcaden" target="_blank">2ambrizcaden</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3343,8 +3355,8 @@
                         <span class="text-sm">75</span>
                         <span><a href="/players/2akramzaara.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2akramzaara" target="_blank">2akramzaara</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3369,8 +3381,8 @@
                         <span class="text-sm">76</span>
                         <span><a href="/players/2hajizadehyasmin.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2hajizadehyasmin" target="_blank">2hajizadehyasmin</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3395,8 +3407,8 @@
                         <span class="text-sm">77</span>
                         <span><a href="/players/3cookmeghan.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3cookmeghan" target="_blank">3cookmeghan</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3421,8 +3433,8 @@
                         <span class="text-sm">78</span>
                         <span><a href="/players/seyeong.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 seyeong" target="_blank">seyeong</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3447,8 +3459,8 @@
                         <span class="text-sm">79</span>
                         <span><a href="/players/2andersonrhys.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2andersonrhys" target="_blank">2andersonrhys</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3473,8 +3485,8 @@
                         <span class="text-sm">80</span>
                         <span><a href="/players/1valerozadela.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1valerozadela" target="_blank">1valerozadela</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3499,8 +3511,8 @@
                         <span class="text-sm">81</span>
                         <span><a href="/players/6claypillora.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6claypillora" target="_blank">6claypillora</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3525,8 +3537,8 @@
                         <span class="text-sm">82</span>
                         <span><a href="/players/5geselina.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5geselina" target="_blank">5geselina</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3551,8 +3563,8 @@
                         <span class="text-sm">83</span>
                         <span><a href="/players/5afzalzadehlaily.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5afzalzadehlaily" target="_blank">5afzalzadehlaily</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3577,8 +3589,8 @@
                         <span class="text-sm">84</span>
                         <span><a href="/players/5kanglyn.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5kanglyn" target="_blank">5kanglyn</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3603,8 +3615,8 @@
                         <span class="text-sm">85</span>
                         <span><a href="/players/6mamarianrubyna.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6mamarianrubyna" target="_blank">6mamarianrubyna</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3629,8 +3641,8 @@
                         <span class="text-sm">86</span>
                         <span><a href="/players/1prasadanika.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1prasadanika" target="_blank">1prasadanika</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3655,8 +3667,8 @@
                         <span class="text-sm">87</span>
                         <span><a href="/players/1mostafavidaniel.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1mostafavidaniel" target="_blank">1mostafavidaniel</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3681,8 +3693,8 @@
                         <span class="text-sm">88</span>
                         <span><a href="/players/2baradlayannie.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2baradlayannie" target="_blank">2baradlayannie</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3707,8 +3719,8 @@
                         <span class="text-sm">89</span>
                         <span><a href="/players/1byakodvedika.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 1byakodvedika" target="_blank">1byakodvedika</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3733,8 +3745,8 @@
                         <span class="text-sm">90</span>
                         <span><a href="/players/2symmonsnatalie.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2symmonsnatalie" target="_blank">2symmonsnatalie</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3759,8 +3771,8 @@
                         <span class="text-sm">91</span>
                         <span><a href="/players/5ahujaalisha.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5ahujaalisha" target="_blank">5ahujaalisha</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3785,8 +3797,8 @@
                         <span class="text-sm">92</span>
                         <span><a href="/players/3liuemily.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3liuemily" target="_blank">3liuemily</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3811,8 +3823,8 @@
                         <span class="text-sm">93</span>
                         <span><a href="/players/5smithmarco.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5smithmarco" target="_blank">5smithmarco</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3837,8 +3849,8 @@
                         <span class="text-sm">94</span>
                         <span><a href="/players/3shihmercury.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3shihmercury" target="_blank">3shihmercury</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3863,8 +3875,8 @@
                         <span class="text-sm">95</span>
                         <span><a href="/players/3shitomichihiro.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3shitomichihiro" target="_blank">3shitomichihiro</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3889,8 +3901,8 @@
                         <span class="text-sm">96</span>
                         <span><a href="/players/5kimben.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5kimben" target="_blank">5kimben</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3915,8 +3927,8 @@
                         <span class="text-sm">97</span>
                         <span><a href="/players/2neubertsophia.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2neubertsophia" target="_blank">2neubertsophia</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3941,8 +3953,8 @@
                         <span class="text-sm">98</span>
                         <span><a href="/players/3windsorlyla.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3windsorlyla" target="_blank">3windsorlyla</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3967,8 +3979,8 @@
                         <span class="text-sm">99</span>
                         <span><a href="/players/6valsalon.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6valsalon" target="_blank">6valsalon</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -3993,8 +4005,8 @@
                         <span class="text-sm">100</span>
                         <span><a href="/players/2quachisis.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2quachisis" target="_blank">2quachisis</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4019,8 +4031,8 @@
                         <span class="text-sm">101</span>
                         <span><a href="/players/6lopesdebritorayane.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6lopesdebritorayane" target="_blank">6lopesdebritorayane</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4045,8 +4057,8 @@
                         <span class="text-sm">102</span>
                         <span><a href="/players/2wuchristopher.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2wuchristopher" target="_blank">2wuchristopher</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4071,8 +4083,8 @@
                         <span class="text-sm">103</span>
                         <span><a href="/players/5vincentchung.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5vincentchung" target="_blank">5vincentchung</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4097,8 +4109,8 @@
                         <span class="text-sm">104</span>
                         <span><a href="/players/5qinsophia.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5qinsophia" target="_blank">5qinsophia</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4123,8 +4135,8 @@
                         <span class="text-sm">105</span>
                         <span><a href="/players/6choierica.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6choierica" target="_blank">6choierica</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4149,8 +4161,8 @@
                         <span class="text-sm">106</span>
                         <span><a href="/players/3yueleanor.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3yueleanor" target="_blank">3yueleanor</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4175,8 +4187,8 @@
                         <span class="text-sm">107</span>
                         <span><a href="/players/2eberhartsavannah.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2eberhartsavannah" target="_blank">2eberhartsavannah</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4201,8 +4213,8 @@
                         <span class="text-sm">108</span>
                         <span><a href="/players/5davoudibrandon.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5davoudibrandon" target="_blank">5davoudibrandon</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4227,8 +4239,8 @@
                         <span class="text-sm">109</span>
                         <span><a href="/players/2whitecaden.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2whitecaden" target="_blank">2whitecaden</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4253,8 +4265,8 @@
                         <span class="text-sm">110</span>
                         <span><a href="/players/3awyonglinus.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3awyonglinus" target="_blank">3awyonglinus</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4279,8 +4291,8 @@
                         <span class="text-sm">111</span>
                         <span><a href="/players/2alexialee.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2alexialee" target="_blank">2alexialee</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4305,8 +4317,8 @@
                         <span class="text-sm">112</span>
                         <span><a href="/players/6faureian.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6faureian" target="_blank">6faureian</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4331,8 +4343,8 @@
                         <span class="text-sm">113</span>
                         <span><a href="/players/all_in_tqqq.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 all_in_tqqq" target="_blank">all_in_tqqq</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4357,8 +4369,8 @@
                         <span class="text-sm">114</span>
                         <span><a href="/players/2greenesal.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2greenesal" target="_blank">2greenesal</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4383,8 +4395,8 @@
                         <span class="text-sm">115</span>
                         <span><a href="/players/ufatalo.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 ufatalo" target="_blank">ufatalo</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4409,8 +4421,8 @@
                         <span class="text-sm">116</span>
                         <span><a href="/players/6chaocaleb.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6chaocaleb" target="_blank">6chaocaleb</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4435,8 +4447,8 @@
                         <span class="text-sm">117</span>
                         <span><a href="/players/5hsutitus.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5hsutitus" target="_blank">5hsutitus</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4461,8 +4473,8 @@
                         <span class="text-sm">118</span>
                         <span><a href="/players/6ishiguronobuhisa.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6ishiguronobuhisa" target="_blank">6ishiguronobuhisa</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4487,8 +4499,8 @@
                         <span class="text-sm">119</span>
                         <span><a href="/players/2bumanlagjacob.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2bumanlagjacob" target="_blank">2bumanlagjacob</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4513,8 +4525,8 @@
                         <span class="text-sm">120</span>
                         <span><a href="/players/3vobryant.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3vobryant" target="_blank">3vobryant</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4539,8 +4551,8 @@
                         <span class="text-sm">121</span>
                         <span><a href="/players/2freyolivia.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2freyolivia" target="_blank">2freyolivia</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4565,8 +4577,8 @@
                         <span class="text-sm">122</span>
                         <span><a href="/players/2urvizoefrain.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 2urvizoefrain" target="_blank">2urvizoefrain</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4591,8 +4603,8 @@
                         <span class="text-sm">123</span>
                         <span><a href="/players/5telikepallisharvil.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5telikepallisharvil" target="_blank">5telikepallisharvil</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4617,8 +4629,8 @@
                         <span class="text-sm">124</span>
                         <span><a href="/players/shankmoitra.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 shankmoitra" target="_blank">shankmoitra</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4643,8 +4655,8 @@
                         <span class="text-sm">125</span>
                         <span><a href="/players/6slacklucas.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 6slacklucas" target="_blank">6slacklucas</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4669,8 +4681,8 @@
                         <span class="text-sm">126</span>
                         <span><a href="/players/3goldsmithsusannah.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3goldsmithsusannah" target="_blank">3goldsmithsusannah</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4695,8 +4707,8 @@
                         <span class="text-sm">127</span>
                         <span><a href="/players/3yanjoshua.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3yanjoshua" target="_blank">3yanjoshua</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4721,8 +4733,8 @@
                         <span class="text-sm">128</span>
                         <span><a href="/players/3linandrew.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 3linandrew" target="_blank">3linandrew</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4747,8 +4759,8 @@
                         <span class="text-sm">129</span>
                         <span><a href="/players/5shihcalista.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 5shihcalista" target="_blank">5shihcalista</a></span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -4974,9 +4986,19 @@
         // Add click handlers for collapsible sections
         document.querySelectorAll('.collapsible-header').forEach(header => {
             header.addEventListener('click', function() {
-                const content = this.nextElementSibling;
+                const content = this.closest('div').nextElementSibling;
                 const icon = this.querySelector('.toggle-icon');
                 
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.active').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                        const otherIcon = item.previousElementSibling.querySelector('.toggle-icon');
+                        if (otherIcon) otherIcon.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current section
                 content.classList.toggle('active');
                 icon.classList.toggle('active');
             });

@@ -19,10 +19,22 @@
 
     .collapsible-content {
         display: none;
+        transition: all 0.3s ease-in-out;
     }
 
     .collapsible-content.active {
         display: block;
+    }
+
+    .toggle-icon::after {
+        content: '▼';
+        margin-left: 4px;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .toggle-icon.active::after {
+        transform: rotate(180deg);
     }
 </style>
 {% endblock %}
@@ -117,7 +129,7 @@
     </div>
 </div>
 
-<table class="w-full">
+<table class="w-full" id="rankings">
     <thead class="hidden md:table-header-group">
         <tr>
             <th class="px-4 py-2">Rank</th>
@@ -137,8 +149,8 @@
                         <span class="text-sm">{{ row[0] }}</span>
                         <span>{{ row[1] | safe }}</span>
                     </div>
-                    <button class="collapsible-header bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-md text-sm">
-                        Details
+                    <button class="collapsible-header bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 px-3 py-1 rounded-md text-sm">
+                        <span class="toggle-icon">Details</span>
                     </button>
                 </div>
                 <div class="collapsible-content px-4 py-2 bg-gray-50 dark:bg-gray-900">
@@ -364,9 +376,19 @@
         // Add click handlers for collapsible sections
         document.querySelectorAll('.collapsible-header').forEach(header => {
             header.addEventListener('click', function() {
-                const content = this.nextElementSibling;
+                const content = this.closest('div').nextElementSibling;
                 const icon = this.querySelector('.toggle-icon');
                 
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.active').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                        const otherIcon = item.previousElementSibling.querySelector('.toggle-icon');
+                        if (otherIcon) otherIcon.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current section
                 content.classList.toggle('active');
                 icon.classList.toggle('active');
             });
