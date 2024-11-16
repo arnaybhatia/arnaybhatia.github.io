@@ -97,10 +97,15 @@
 
 
 <br>
-<p class="text-center text-xl">Last updated 01:26:38 11-16-2024</p>
+<p class="text-center text-xl">Last updated 01:29:57 11-16-2024</p>
 <br>
 <div class="flex justify-center">
     <div class="w-4/5 h-[60vh]" id="chartContainer">
+        <!-- Add series toggles -->
+        <div class="flex justify-center mb-2 space-x-2">
+            <button class="uk-button uk-button-small series-toggle active" data-series="portfolio">Portfolio</button>
+            <button class="uk-button uk-button-small series-toggle active" data-series="sp500">S&P 500</button>
+        </div>
         <div id="playerChart"></div>
     </div>
 </div>
@@ -335,9 +340,52 @@
         });
     });
 
+    // Store series in an object for easy access
+    const series = {
+        portfolio: portfolioSeries,
+        sp500: sp500Series
+    };
+
+    // Add toggle functionality
+    document.querySelectorAll('.series-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const seriesName = button.dataset.series;
+            button.classList.toggle('active');
+            const isVisible = button.classList.contains('active');
+            series[seriesName].applyOptions({
+                visible: isVisible
+            });
+        });
+    });
+
     // Initial fit content
     chart.timeScale().fitContent();
 </script>
+
+<style>
+    .series-toggle {
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .series-toggle.active {
+        opacity: 1;
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        .series-toggle {
+            background-color: #333;
+            color: #fff;
+            border-color: #666;
+        }
+        
+        .series-toggle.active {
+            background-color: #444;
+            border-color: #888;
+        }
+    }
+</style>
 
     </body>
 
