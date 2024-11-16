@@ -106,6 +106,7 @@ def make_index_page():
             "SPY",
             start=initial_date,
             end=initial_date + timedelta(days=1),
+            interval="1h",  # Changed from 1d to 1h
         )
         initial_sp500_price = float(sp500_initial["Close"].iloc[0])
 
@@ -344,7 +345,7 @@ def make_user_pages(usernames):
             "SPY",
             start=initial_date,
             end=initial_date + timedelta(days=1),
-            interval="1d",
+            interval="1h",  # Changed from 1d to 1h
         )
         initial_sp500_price = float(sp500_initial["Close"].iloc[0])
 
