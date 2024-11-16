@@ -102,6 +102,27 @@
             }
         }
     }
+
+    /* Mobile-specific styles for collapsible columns */
+    @media (max-width: 768px) {
+        .desktop-only {
+            display: none !important;
+        }
+        
+        .mobile-details {
+            display: block;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .mobile-details {
+            display: none !important;
+        }
+        
+        .desktop-only {
+            display: table-cell;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -197,37 +218,30 @@
 
 <table class="uk-table uk-table-striped uk-table-responsive" id="rankings">
     <tr>
-        {% for col in column_names %}
-        <th {% if col in ["Account Value", "Stocks Invested", "Z-Score"] %}class="mobile-hidden"{% endif %}>{{col}}</th>
-        {% endfor %}
+        <th>Rank</th>
+        <th>Account</th>
+        <th class="desktop-only">Account Value</th>
+        <th class="desktop-only">Stocks Invested</th>
+        <th class="desktop-only">Z-Score</th>
+        <th class="mobile-details">Details</th>
     </tr>
     {% for row in row_data %}
     <tr {% if "teachermiller" in row %}class="font-bold"{% endif %}>
-        <!-- Rank -->
         <td>{{ row[0] }}</td>
-        <!-- Account Link -->
         <td>{{ row[1] | safe }}</td>
-        
-        <!-- Mobile collapsible section -->
-        <td class="collapsible-cell">
-            <div class="d-none d-md-table-cell mobile-hidden">
-                {{ row[2] }}
+        <td class="desktop-only">{{ row[2] }}</td>
+        <td class="desktop-only">{{ row[3] }}</td>
+        <td class="desktop-only">{{ row[4] }}</td>
+        <td class="mobile-details">
+            <div class="collapsible-header">
+                <span class="toggle-icon">View Details</span>
             </div>
-            <div class="d-md-none">
-                <div class="collapsible-header">
-                    <span class="toggle-icon">Details</span>
-                </div>
-                <div class="collapsible-content">
-                    <p><strong>Account Value:</strong> {{ row[2] }}</p>
-                    <p><strong>Stocks Invested:</strong> {{ row[3] }}</p>
-                    <p><strong>Z-Score:</strong> {{ row[4] }}</p>
-                </div>
+            <div class="collapsible-content">
+                <p><strong>Account Value:</strong> {{ row[2] }}</p>
+                <p><strong>Stocks Invested:</strong> {{ row[3] }}</p>
+                <p><strong>Z-Score:</strong> {{ row[4] }}</p>
             </div>
         </td>
-        
-        <!-- Desktop-only columns -->
-        <td class="mobile-hidden">{{ row[3] }}</td>
-        <td class="mobile-hidden">{{ row[4] }}</td>
     </tr>
     {% endfor %}
 </table>
