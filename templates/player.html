@@ -20,6 +20,7 @@
         <div class="flex justify-center mb-4 space-x-2">
             <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="portfolio">Portfolio</button>
             <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="sp500">S&P 500</button>
+            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="tqqq">TQQQ</button>
         </div>
         <div id="playerChart"></div>
     </div>
@@ -166,9 +167,17 @@
         lineWidth: 2,
     });
 
+    const tqqqSeries = chart.addAreaSeries({
+        lineColor: 'rgb(75, 75, 192)',
+        topColor: 'rgba(75, 75, 192, 0.4)',
+        bottomColor: 'rgba(75, 75, 192, 0.1)',
+        lineWidth: 2,
+    });
+
     const labels = {{ labels | safe }};
     const money = {{ player_money | safe }};
     const sp500Data = {{ sp500_prices | safe }};
+    const tqqqData = {{ tqqq_prices | safe }};
 
     const portfolioData = labels.map((timeStr, i) => {
         const date = new Date(timeStr);
@@ -231,7 +240,8 @@
     // Store series in an object for easy access
     const series = {
         portfolio: portfolioSeries,
-        sp500: sp500Series
+        sp500: sp500Series,
+        tqqq: tqqqSeries
     };
 
     // Add toggle functionality

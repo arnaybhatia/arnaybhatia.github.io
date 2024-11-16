@@ -337,17 +337,19 @@ def make_user_pages(usernames):
         all_dfs = []
         timestamps = []
         sp500_prices = []
+        tqqq_prices = []
 
-        # Get initial S&P 500 price from August 9th, 2024 (Friday) market close
+        # Get initial prices from August 9th, 2024 (Friday) market close
         initial_date = datetime(2024, 8, 9, tzinfo=ZoneInfo("America/New_York"))
         initial_date = get_previous_trading_day(initial_date)
-        sp500_initial = yf.download(
-            "SPY",
+        initial_prices = yf.download(
+            ["SPY", "TQQQ"],
             start=initial_date,
             end=initial_date + timedelta(days=1),
-            interval="1h",  # Changed from 1d to 1h
+            interval="1h",
         )
-        initial_sp500_price = float(sp500_initial["Close"].iloc[0])
+        initial_sp500_price = float(initial_prices["Close"]["SPY"].iloc[0])
+        initial_tqqq_price = float(initial_prices["Close"]["TQQQ"].iloc[0])
 
         # Collect timestamps and process files
         for file in leaderboard_files:
@@ -358,36 +360,50 @@ def make_user_pages(usernames):
             )
             timestamps.append(date_time)
 
-        # Fetch S&P 500 data
+        # Fetch price data
         start_date = min(timestamps).date()
         end_date = max(timestamps).date() + timedelta(days=1)
-        sp500 = yf.download(
-            "SPY", start=start_date, end=end_date, interval="15m"
-        )  # Changed from 10m to 15m
+        price_data = yf.download(
+            ["SPY", "TQQQ"], start=start_date, end=end_date, interval="15m"
+        )
 
         # Process each timestamp
         for file, timestamp in zip(leaderboard_files, timestamps):
-            # Format timestamp with full UTC date-time info
             date_time_str = timestamp.strftime("%Y-%m-%dT%H:%M:%S")
             labels.append(date_time_str)
 
-            # Get S&P 500 price
-            date_for_sp500 = timestamp.date()
+            # Get prices
+            date_for_price = timestamp.date()
             try:
-                current_sp500_price = float(sp500.loc[date_for_sp500, "Close"])
-                relative_return = current_sp500_price / initial_sp500_price
-                sp500_price = 100000 * relative_return
+                current_sp500_price = float(
+                    price_data["Close"]["SPY"].loc[date_for_price]
+                )
+                current_tqqq_price = float(
+                    price_data["Close"]["TQQQ"].loc[date_for_price]
+                )
+
+                sp500_price = 100000 * (current_sp500_price / initial_sp500_price)
+                tqqq_price = 100000 * (current_tqqq_price / initial_tqqq_price)
             except KeyError:
-                previous_dates = sp500.index[sp500.index.date <= date_for_sp500]
+                previous_dates = price_data.index[
+                    price_data.index.date <= date_for_price
+                ]
                 if len(previous_dates) > 0:
                     current_sp500_price = float(
-                        sp500.loc[previous_dates[-1], "Close"].iloc[0]
+                        price_data["Close"]["SPY"].loc[previous_dates[-1]]
                     )
-                    relative_return = current_sp500_price / initial_sp500_price
-                    sp500_price = 100000 * relative_return
+                    current_tqqq_price = float(
+                        price_data["Close"]["TQQQ"].loc[previous_dates[-1]]
+                    )
+
+                    sp500_price = 100000 * (current_sp500_price / initial_sp500_price)
+                    tqqq_price = 100000 * (current_tqqq_price / initial_tqqq_price)
                 else:
                     sp500_price = None
+                    tqqq_price = None
+
             sp500_prices.append(sp500_price)
+            tqqq_prices.append(tqqq_price)
 
             # Process leaderboard data
             with open(file, "r") as f:
@@ -467,6 +483,7 @@ def make_user_pages(usernames):
                 .astimezone(ZoneInfo("US/Pacific"))
                 .strftime("%H:%M:%S %m-%d-%Y"),
                 sp500_prices=sp500_prices,
+                tqqq_prices=tqqq_prices,
                 zip=zip,
             )
 
