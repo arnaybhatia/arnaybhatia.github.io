@@ -98,8 +98,12 @@
             <div class="uk-container">
                 <div class="uk-navbar flex items-center justify-between relative">
                     <!-- Mobile Menu Button -->
-                    <button class="md:hidden uk-button p-2" onclick="toggleMobileMenu()">
-                        <span uk-icon="menu"></span>
+                    <button class="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg" onclick="toggleMobileMenu()">
+                        <div class="w-6 h-6 flex flex-col justify-around">
+                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                        </div>
                     </button>
 
                     <!-- Logo (always visible) -->
@@ -137,7 +141,7 @@
         
 <h1 class="text-center text-2xl">Imagine if Investopedia was good at making a leaderboard</h1>
 <br>
-<p class="text-center text-xl">Last updated 19:11:34 11-15-2024</p>
+<p class="text-center text-xl">Last updated 19:13:17 11-15-2024</p>
 <br>
 <p class="text-center text-xl">Code can be found at: <a href="https://github.com/lelandstocks/lelandstocks.github.io"
         class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"> LelandStocks</a></p>

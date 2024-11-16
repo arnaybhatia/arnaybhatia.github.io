@@ -51,8 +51,12 @@
             <div class="uk-container">
                 <div class="uk-navbar flex items-center justify-between relative">
                     <!-- Mobile Menu Button -->
-                    <button class="md:hidden uk-button p-2" onclick="toggleMobileMenu()">
-                        <span uk-icon="menu"></span>
+                    <button class="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg" onclick="toggleMobileMenu()">
+                        <div class="w-6 h-6 flex flex-col justify-around">
+                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                        </div>
                     </button>
 
                     <!-- Logo (always visible) -->
@@ -93,7 +97,7 @@
 
 
 <br>
-<p class="text-center text-xl">Last updated 19:12:04 11-15-2024</p>
+<p class="text-center text-xl">Last updated 19:13:41 11-15-2024</p>
 <br>
 <div class="flex justify-center">
     <div class="w-4/5 h-[60vh]" id="chartContainer">
