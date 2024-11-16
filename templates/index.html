@@ -121,10 +121,10 @@
             <div class="legend-item cursor-pointer active" data-series="q3">
                 <span class="legend-color" style="background: #FF9F40"></span>Q3
             </div>
-            <div class="legend-item cursor-pointer active" data-series="min">
+            <div class="legend-item cursor-pointer" data-series="min">
                 <span class="legend-color" style="background: #4BC0C0"></span>Min
             </div>
-            <div class="legend-item cursor-pointer active" data-series="max">
+            <div class="legend-item cursor-pointer" data-series="max">
                 <span class="legend-color" style="background: #36A2EB"></span>Max
             </div>
         </div>
@@ -381,6 +381,7 @@
         topColor: 'rgba(75, 192, 192, 0.4)',
         bottomColor: 'rgba(75, 192, 192, 0.1)',
         lineWidth: 2,
+        visible: false,  // Add this line
     });
 
     const maxSeries = chart.addAreaSeries({
@@ -388,6 +389,7 @@
         topColor: 'rgba(54, 162, 235, 0.4)',
         bottomColor: 'rgba(54, 162, 235, 0.1)',
         lineWidth: 2,
+        visible: false,  // Add this line
     });
 
     // Create and process data with proper timestamps
