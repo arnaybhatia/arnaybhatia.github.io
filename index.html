@@ -111,6 +111,13 @@
         display: flex;
         align-items: center;
         font-size: 12px;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .legend-item.active {
+        opacity: 1;
     }
     
     .legend-color {
@@ -180,30 +187,33 @@
         
 <h1 class="text-center text-2xl">Imagine if Investopedia was good at making a leaderboard</h1>
 <br>
-<p class="text-center text-xl">Last updated 02:14:05 11-16-2024</p>
+<p class="text-center text-xl">Last updated 02:15:51 11-16-2024</p>
 <br>
 <p class="text-center text-xl">Code can be found at: <a href="https://github.com/lelandstocks/lelandstocks.github.io"
         class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"> LelandStocks</a></p>
 <div class="flex flex-wrap justify-center">
     <!-- Chart Container -->
     <div class="w-full md:w-1/2 p-4 h-full md:h-auto flex flex-col"> <!-- Added flex-col -->
-        <!-- Add series toggles -->
-        <div class="flex justify-center mb-2 space-x-2">
-            <button class="uk-button uk-button-small series-toggle active" data-series="sp500">S&P 500</button>
-            <button class="uk-button uk-button-small series-toggle active" data-series="q1">Q1</button>
-            <button class="uk-button uk-button-small series-toggle active" data-series="median">Median</button>
-            <button class="uk-button uk-button-small series-toggle active" data-series="q3">Q3</button>
-            <button class="uk-button uk-button-small series-toggle active" data-series="min">Min</button>
-            <button class="uk-button uk-button-small series-toggle active" data-series="max">Max</button>
-        </div>
-        <!-- Add legend -->
+        <!-- Replace buttons with clickable legend -->
         <div class="legend flex justify-center mb-2 space-x-4">
-            <div class="legend-item"><span class="legend-color" style="background: #FF6384"></span>S&P 500</div>
-            <div class="legend-item"><span class="legend-color" style="background: #9966FF"></span>Q1</div>
-            <div class="legend-item"><span class="legend-color" style="background: #FFCE56"></span>Median</div>
-            <div class="legend-item"><span class="legend-color" style="background: #FF9F40"></span>Q3</div>
-            <div class="legend-item"><span class="legend-color" style="background: #4BC0C0"></span>Min</div>
-            <div class="legend-item"><span class="legend-color" style="background: #36A2EB"></span>Max</div>
+            <div class="legend-item cursor-pointer active" data-series="sp500">
+                <span class="legend-color" style="background: #FF6384"></span>S&P 500
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="q1">
+                <span class="legend-color" style="background: #9966FF"></span>Q1
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="median">
+                <span class="legend-color" style="background: #FFCE56"></span>Median
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="q3">
+                <span class="legend-color" style="background: #FF9F40"></span>Q3
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="min">
+                <span class="legend-color" style="background: #4BC0C0"></span>Min
+            </div>
+            <div class="legend-item cursor-pointer active" data-series="max">
+                <span class="legend-color" style="background: #36A2EB"></span>Max
+            </div>
         </div>
         <div class="flex-grow chart-container" id="chartContainer">
             <div id="stockChart"></div>
@@ -5803,12 +5813,12 @@
         max: maxSeries
     };
 
-    // Add toggle functionality
-    document.querySelectorAll('.series-toggle').forEach(button => {
-        button.addEventListener('click', () => {
-            const seriesName = button.dataset.series;
-            button.classList.toggle('active');
-            const isVisible = button.classList.contains('active');
+    // Replace button toggle functionality with legend toggle
+    document.querySelectorAll('.legend-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const seriesName = item.dataset.series;
+            item.classList.toggle('active');
+            const isVisible = item.classList.contains('active');
             series[seriesName].applyOptions({
                 visible: isVisible
             });
