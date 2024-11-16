@@ -129,7 +129,7 @@ def make_index_page():
                     ZoneInfo("America/New_York")
                 ),  # Convert to NY time for market hours
                 end=end_date.astimezone(ZoneInfo("America/New_York")),
-                interval="5m",
+                interval="15m",  # Changed from 10m to 15m
             )
             # Convert SP500 index to Pacific time
             sp500.index = sp500.index.tz_convert("America/Los_Angeles")
@@ -361,7 +361,9 @@ def make_user_pages(usernames):
         # Fetch S&P 500 data
         start_date = min(timestamps).date()
         end_date = max(timestamps).date() + timedelta(days=1)
-        sp500 = yf.download("SPY", start=start_date, end=end_date, interval="5m")
+        sp500 = yf.download(
+            "SPY", start=start_date, end=end_date, interval="15m"
+        )  # Changed from 10m to 15m
 
         # Process each timestamp
         for file, timestamp in zip(leaderboard_files, timestamps):
