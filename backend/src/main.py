@@ -8,7 +8,7 @@ from playwright.async_api import async_playwright
 
 import pytz
 from dotenv import load_dotenv
-from make_webpage import make_index_page, make_user_pages, make_user_page
+from make_webpage import make_index_page, make_user_pages
 
 load_dotenv()
 
@@ -239,12 +239,6 @@ async def get_account_information():
             await browser.close()
 
     return account_information
-
-
-def generate_user_page(user):
-    """Helper function to generate a single user's page"""
-    with open(f"./players/{user}.html", "w") as file:
-        file.write(make_user_page(user))
 
 
 # Main execution block
