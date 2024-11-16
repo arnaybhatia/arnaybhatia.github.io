@@ -30,15 +30,15 @@
                 <span class="legend-color"
                     style="background: rgb(192, 75, 75)"></span>S&P 500
             </div>
-            <div class="legend-item cursor-pointer active" data-series="tqqq">
+            <div class="legend-item cursor-pointer" data-series="tqqq">
                 <span class="legend-color"
                     style="background: rgb(75, 75, 192)"></span>TQQQ
             </div>
-            <div class="legend-item cursor-pointer active" data-series="nvda">
+            <div class="legend-item cursor-pointer" data-series="nvda">
                 <span class="legend-color"
                     style="background: rgb(0, 192, 0)"></span>NVDA
             </div>
-            <div class="legend-item cursor-pointer active" data-series="djt">
+            <div class="legend-item cursor-pointer" data-series="djt">
                 <span class="legend-color"
                     style="background: rgb(192, 192, 0)"></span>DJT
             </div>
@@ -199,6 +199,7 @@
         topColor: 'rgba(75, 75, 192, 0.4)',
         bottomColor: 'rgba(75, 75, 192, 0.1)',
         lineWidth: 2,
+        visible: false,  // Add this line
     });
 
     const nvdaSeries = chart.addAreaSeries({
@@ -206,6 +207,7 @@
         topColor: 'rgba(0, 192, 0, 0.4)',
         bottomColor: 'rgba(0, 192, 0, 0.1)',
         lineWidth: 2,
+        visible: false,  // Add this line
     });
 
     const djtSeries = chart.addAreaSeries({
@@ -213,6 +215,7 @@
         topColor: 'rgba(192, 192, 0, 0.4)',
         bottomColor: 'rgba(192, 192, 0, 0.1)',
         lineWidth: 2,
+        visible: false,  // Add this line
     });
 
     const labels = {{ labels | safe }};
