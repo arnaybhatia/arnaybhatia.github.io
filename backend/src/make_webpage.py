@@ -106,7 +106,6 @@ def make_index_page():
             "SPY",
             start=initial_date,
             end=initial_date + timedelta(days=1),
-            interval="1d",
         )
         initial_sp500_price = float(sp500_initial["Close"].iloc[0])
 
@@ -338,6 +337,17 @@ def make_user_pages(usernames):
         timestamps = []
         sp500_prices = []
 
+        # Get initial S&P 500 price from August 9th, 2024 (Friday) market close
+        initial_date = datetime(2024, 8, 9, tzinfo=ZoneInfo("America/New_York"))
+        initial_date = get_previous_trading_day(initial_date)
+        sp500_initial = yf.download(
+            "SPY",
+            start=initial_date,
+            end=initial_date + timedelta(days=1),
+            interval="1d",
+        )
+        initial_sp500_price = float(sp500_initial["Close"].iloc[0])
+
         # Collect timestamps and process files
         for file in leaderboard_files:
             file_name = os.path.basename(file)
@@ -351,18 +361,6 @@ def make_user_pages(usernames):
         start_date = min(timestamps).date()
         end_date = max(timestamps).date() + timedelta(days=1)
         sp500 = yf.download("SPY", start=start_date, end=end_date, interval="5m")
-
-        # Get initial S&P 500 price
-        initial_sp500_price = None
-        initial_date = start_date
-        while initial_sp500_price is None and initial_date <= end_date:
-            try:
-                initial_sp500_price = float(sp500.loc[initial_date, "Close"])
-            except KeyError:
-                initial_date += timedelta(days=1)
-
-        if initial_sp500_price is None:
-            initial_sp500_price = float(sp500["Close"].iloc[0])
 
         # Process each timestamp
         for file, timestamp in zip(leaderboard_files, timestamps):
