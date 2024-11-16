@@ -21,6 +21,8 @@
             <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="portfolio">Portfolio</button>
             <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="sp500">S&P 500</button>
             <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="tqqq">TQQQ</button>
+            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="nvda">NVDA</button>
+            <button class="uk-button uk-button-small series-toggle active py-1 px-3" data-series="djt">DJT</button>
         </div>
         <div id="playerChart"></div>
     </div>
@@ -174,10 +176,26 @@
         lineWidth: 2,
     });
 
+    const nvdaSeries = chart.addAreaSeries({
+        lineColor: 'rgb(0, 192, 0)',
+        topColor: 'rgba(0, 192, 0, 0.4)',
+        bottomColor: 'rgba(0, 192, 0, 0.1)',
+        lineWidth: 2,
+    });
+
+    const djtSeries = chart.addAreaSeries({
+        lineColor: 'rgb(192, 192, 0)',
+        topColor: 'rgba(192, 192, 0, 0.4)',
+        bottomColor: 'rgba(192, 192, 0, 0.1)',
+        lineWidth: 2,
+    });
+
     const labels = {{ labels | safe }};
     const money = {{ player_money | safe }};
     const sp500Data = {{ sp500_prices | safe }};
     const tqqqData = {{ tqqq_prices | safe }};
+    const nvdaData = {{ nvda_prices | safe }};
+    const djtData = {{ djt_prices | safe }};
 
     const portfolioData = labels.map((timeStr, i) => {
         const date = new Date(timeStr);
@@ -209,14 +227,38 @@
         };
     }).filter(item => item.value !== 0);
 
+    const nvdaChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: nvdaData[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
+    const djtChartData = labels.map((timeStr, i) => {
+        const date = new Date(timeStr);
+        // Convert to PST
+        const pstDate = convertTZ(date, 'America/Los_Angeles');
+        return {
+            time: Math.floor(date.getTime() / 1000),
+            value: djtData[i] || 0
+        };
+    }).filter(item => item.value !== 0);
+
     // Sort data by timestamp
     portfolioData.sort((a, b) => a.time - b.time);
     sp500ChartData.sort((a, b) => a.time - b.time);
     tqqqChartData.sort((a, b) => a.time - b.time);
+    nvdaChartData.sort((a, b) => a.time - b.time);
+    djtChartData.sort((a, b) => a.time - b.time);
 
     portfolioSeries.setData(portfolioData);
     sp500Series.setData(sp500ChartData);
     tqqqSeries.setData(tqqqChartData);
+    nvdaSeries.setData(nvdaChartData);
+    djtSeries.setData(djtChartData);
 
     chart.timeScale().fitContent();
 
@@ -253,7 +295,9 @@
     const series = {
         portfolio: portfolioSeries,
         sp500: sp500Series,
-        tqqq: tqqqSeries
+        tqqq: tqqqSeries,
+        nvda: nvdaSeries,
+        djt: djtSeries
     };
 
     // Add toggle functionality

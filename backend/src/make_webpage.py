@@ -338,18 +338,22 @@ def make_user_pages(usernames):
         timestamps = []
         sp500_prices = []
         tqqq_prices = []
+        nvda_prices = []
+        djt_prices = []
 
         # Get initial prices from August 9th, 2024 (Friday) market close
         initial_date = datetime(2024, 8, 9, tzinfo=ZoneInfo("America/New_York"))
         initial_date = get_previous_trading_day(initial_date)
         initial_prices = yf.download(
-            ["SPY", "TQQQ"],
+            ["SPY", "TQQQ", "NVDA", "DJT"],
             start=initial_date,
             end=initial_date + timedelta(days=1),
             interval="1h",
         )
         initial_sp500_price = float(initial_prices["Close"]["SPY"].iloc[0])
         initial_tqqq_price = float(initial_prices["Close"]["TQQQ"].iloc[0])
+        initial_nvda_price = float(initial_prices["Close"]["NVDA"].iloc[0])
+        initial_djt_price = float(initial_prices["Close"]["DJT"].iloc[0])
 
         # Collect timestamps and process files
         for file in leaderboard_files:
@@ -364,7 +368,10 @@ def make_user_pages(usernames):
         start_date = min(timestamps).date()
         end_date = max(timestamps).date() + timedelta(days=1)
         price_data = yf.download(
-            ["SPY", "TQQQ"], start=start_date, end=end_date, interval="15m"
+            ["SPY", "TQQQ", "NVDA", "DJT"],
+            start=start_date,
+            end=end_date,
+            interval="15m",
         )
 
         # Process each timestamp
@@ -381,9 +388,17 @@ def make_user_pages(usernames):
                 current_tqqq_price = float(
                     price_data["Close"]["TQQQ"].loc[date_for_price]
                 )
+                current_nvda_price = float(
+                    price_data["Close"]["NVDA"].loc[date_for_price]
+                )
+                current_djt_price = float(
+                    price_data["Close"]["DJT"].loc[date_for_price]
+                )
 
                 sp500_price = 100000 * (current_sp500_price / initial_sp500_price)
                 tqqq_price = 100000 * (current_tqqq_price / initial_tqqq_price)
+                nvda_price = 100000 * (current_nvda_price / initial_nvda_price)
+                djt_price = 100000 * (current_djt_price / initial_djt_price)
             except KeyError:
                 previous_dates = price_data.index[
                     price_data.index.date <= date_for_price
@@ -395,15 +410,24 @@ def make_user_pages(usernames):
                     current_tqqq_price = float(
                         price_data["Close"]["TQQQ"].loc[previous_dates[-1]]
                     )
+                    current_nvda_price = float(
+                        price_data["Close"]["NVDA"].loc[previous_dates[-1]]
+                    )
+                    current_djt_price = float(
+                        price_data["Close"]["DJT"].loc[previous_dates[-1]]
+                    )
 
                     sp500_price = 100000 * (current_sp500_price / initial_sp500_price)
                     tqqq_price = 100000 * (current_tqqq_price / initial_tqqq_price)
+                    nvda_price = 100000 * (current_nvda_price / initial_nvda_price)
+                    djt_price = 100000 * (current_djt_price / initial_djt_price)
                 else:
-                    sp500_price = None
-                    tqqq_price = None
+                    sp500_price = tqqq_price = nvda_price = djt_price = None
 
             sp500_prices.append(sp500_price)
             tqqq_prices.append(tqqq_price)
+            nvda_prices.append(nvda_price)
+            djt_prices.append(djt_price)
 
             # Process leaderboard data
             with open(file, "r") as f:
@@ -484,6 +508,8 @@ def make_user_pages(usernames):
                 .strftime("%H:%M:%S %m-%d-%Y"),
                 sp500_prices=sp500_prices,
                 tqqq_prices=tqqq_prices,
+                nvda_prices=nvda_prices,
+                djt_prices=djt_prices,
                 zip=zip,
             )
 
