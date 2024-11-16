@@ -277,6 +277,15 @@ async def main():
         with open("./backend/portfolios/usernames.txt", "r") as file:
             usernames = [user.strip() for user in file.readlines()]
             make_user_pages(usernames)
+    elif os.environ.get("MAKE_WEBPAGE") == "True":
+        # Update index.html
+        with open("index.html", "w") as file:
+            file.write(make_index_page())
+
+        # Read usernames and generate all pages at once
+        with open("./backend/portfolios/usernames.txt", "r") as file:
+            usernames = [user.strip() for user in file.readlines()]
+            make_user_pages(usernames)
 
 
 if __name__ == "__main__":
