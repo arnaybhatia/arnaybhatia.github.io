@@ -123,6 +123,49 @@
             display: table-cell;
         }
     }
+
+    /* Mobile-specific styles for table layout */
+    @media (max-width: 768px) {
+        #rankings tr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #rankings td {
+            padding: 0;
+            border: none;
+        }
+
+        #rankings .mobile-details {
+            margin-left: auto;
+        }
+
+        .collapsible-header {
+            padding: 4px 8px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            margin: 0;
+        }
+
+        #rankings thead {
+            display: none;
+        }
+
+        .mobile-flex-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .collapsible-header {
+                background-color: #2d2d2d;
+            }
+        }
+    }
 </style>
 {% endblock %}
 
@@ -227,14 +270,16 @@
     </tr>
     {% for row in row_data %}
     <tr {% if "teachermiller" in row %}class="font-bold"{% endif %}>
-        <td>{{ row[0] }}</td>
-        <td>{{ row[1] | safe }}</td>
+        <td class="mobile-flex-container">
+            <span>{{ row[0] }}</span>
+            <span>{{ row[1] | safe }}</span>
+        </td>
         <td class="desktop-only">{{ row[2] }}</td>
         <td class="desktop-only">{{ row[3] }}</td>
         <td class="desktop-only">{{ row[4] }}</td>
         <td class="mobile-details">
             <div class="collapsible-header">
-                <span class="toggle-icon">View Details</span>
+                <span class="toggle-icon">Details</span>
             </div>
             <div class="collapsible-content">
                 <p><strong>Account Value:</strong> {{ row[2] }}</p>
