@@ -5,6 +5,7 @@ import pickle
 import random
 import asyncio
 from playwright.async_api import async_playwright
+import time
 
 import pytz
 from dotenv import load_dotenv
@@ -248,19 +249,17 @@ async def main():
     curr_time = datetime.now(tz_NY)
 
     if curr_time.weekday() < 5:
+        is_trading_hours = (
+            curr_time.hour > 9 or (curr_time.hour == 9 and curr_time.minute >= 30)
+        ) and curr_time.hour < 16
+
         if (
-            (
-                (curr_time.hour > 9 or (curr_time.hour == 9 and curr_time.minute >= 30))
-                and curr_time.hour < 17
-            )
-            or os.environ.get("FORCE_UPDATE") == "True"
+            is_trading_hours or os.environ.get("FORCE_UPDATE") == "True"
         ) and os.environ.get("DONT_UPDATE") != "True":
             account_values = await get_account_information()
 
             file_name = f"./backend/leaderboards/out_of_time/leaderboard-{curr_time.strftime('%Y-%m-%d-%H_%M')}.json"
-            if (
-                curr_time.hour > 9 or (curr_time.hour == 9 and curr_time.minute >= 30)
-            ) and curr_time.hour < 17:
+            if is_trading_hours:
                 file_name = f"./backend/leaderboards/in_time/leaderboard-{curr_time.strftime('%Y-%m-%d-%H_%M')}.json"
 
             with open("./backend/leaderboards/leaderboard-latest.json", "w") as file:
@@ -268,6 +267,10 @@ async def main():
 
             with open(file_name, "w") as file:
                 json.dump(account_values, file)
+
+            # Add 2 minute delay if outside trading hours
+            if not is_trading_hours:
+                time.sleep(120)  # 2 minutes in seconds
         else:
             print("Update disabled")
 
