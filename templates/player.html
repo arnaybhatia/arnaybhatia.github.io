@@ -38,18 +38,18 @@
                 <h2 class="text-primary text-lg sm:text-xl font-bold mb-4">Portfolio Overview</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
                     <div class="p-4 bg-secondary rounded-lg">
-                        <h3 class="text-secondary text-sm">Current Value</h3>
+                        <h3 class="label-text">Current Value</h3>
                         <p class="text-primary text-xl sm:text-2xl font-bold">${{ '{:,.2f}'.format(player_money[-1]) }}</p>
                     </div>
                     <div class="p-4 bg-secondary rounded-lg">
-                        <h3 class="text-secondary text-sm">Total Return</h3>
+                        <h3 class="label-text">Total Return</h3>
                         {% set total_return = ((player_money[-1] - 100000) / 100000) * 100 %}
                         <p class="text-xl sm:text-2xl font-bold {% if total_return >= 0 %}text-success{% else %}text-danger{% endif %}">
                             {{ '{:+.2f}%'.format(total_return) }}
                         </p>
                     </div>
                     <div class="p-4 bg-secondary rounded-lg">
-                        <h3 class="text-secondary text-sm">Active Positions</h3>
+                        <h3 class="label-text">Active Positions</h3>
                         <p class="text-primary text-xl sm:text-2xl font-bold">{{ player_stocks|length }}</p>
                     </div>
                 </div>
@@ -391,6 +391,8 @@
     --button-hover: #f3f4f6;
     --button-active: #dbeafe;
     --button-active-text: #1d4ed8;
+    --label-color: #6b7280;
+    --chart-bg: #ffffff;
 }
 
 /* Dark mode styles */
@@ -406,10 +408,12 @@
         --button-hover: #374151;
         --button-active: #1e3a8a;
         --button-active-text: #bfdbfe;
+        --label-color: #9ca3af;
+        --chart-bg: #1f2937;
     }
 
     .bg-white {
-        background-color: var(--bg-card) !important;
+        background-color: var(--chart-bg) !important;
     }
 
     .bg-gray-50 {
@@ -438,6 +442,10 @@
 
     .uk-button.active {
         @apply bg-blue-900 border-blue-800 text-blue-200;
+    }
+
+    .text-sm {
+        color: var(--label-color);
     }
 }
 
@@ -499,6 +507,12 @@
 
 .divide-border {
     border-color: var(--border-color);
+}
+
+/* Update label styles */
+.label-text {
+    color: var(--label-color);
+    @apply text-sm font-medium;
 }
 </style>
 {% endblock %}
