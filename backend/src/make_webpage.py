@@ -11,6 +11,7 @@ from flask import render_template
 from scipy.stats import zscore
 from zoneinfo import ZoneInfo
 import yfinance as yf
+import asyncio
 
 # this whole file is to render the html table
 app = flask.Flask("leaderboard")
@@ -345,7 +346,82 @@ def make_index_page():
         return rendered
 
 
-def make_user_pages(usernames):
+async def render_user_page(
+    player_name,
+    labels,
+    all_dfs,
+    latest_df,
+    sp500_prices,
+    tqqq_prices,
+    nvda_prices,
+    djt_prices,
+):
+    """Async function to render a single user page"""
+    player_money = []
+    rankings = []
+
+    # Check if player exists in latest data
+    if player_name not in latest_df["Account Name"].values:
+        return None
+
+    # Extract data for this player from all timepoints
+    for df in all_dfs:
+        if player_name in df["Account Name"].values:
+            rankings.append(
+                float(df.loc[df["Account Name"] == player_name, "Ranking"].values[0])
+            )
+            player_money.append(
+                float(
+                    df.loc[
+                        df["Account Name"] == player_name, "Money In Account"
+                    ].values[0]
+                )
+            )
+
+    # Get player details from latest data
+    investopedia_link = latest_df.loc[
+        latest_df["Account Name"] == player_name, "Investopedia Link"
+    ].values[0]
+    player_stocks_data = latest_df.loc[
+        latest_df["Account Name"] == player_name, "Stocks Invested In"
+    ].iloc[0]
+
+    # Process stock data
+    player_stocks = [
+        [
+            stock[0],
+            float(stock[1].replace("$", "").replace(",", "")),
+            float(stock[2].replace("%", "")),
+        ]
+        for stock in player_stocks_data
+    ]
+
+    # Render template
+    rendered = render_template(
+        "player.html",
+        labels=labels,
+        player_money=player_money,
+        player_name=player_name,
+        investopedia_link=investopedia_link,
+        player_stocks=player_stocks,
+        update_time=datetime.utcnow()
+        .astimezone(ZoneInfo("US/Pacific"))
+        .strftime("%H:%M:%S %m-%d-%Y"),
+        sp500_prices=sp500_prices,
+        tqqq_prices=tqqq_prices,
+        nvda_prices=nvda_prices,
+        djt_prices=djt_prices,
+        zip=zip,
+    )
+
+    # Write file
+    with open(f"players/{player_name}.html", "w") as f:
+        f.write(rendered)
+
+    return player_name
+
+
+async def make_user_pages(usernames):
     """Generate HTML pages for multiple users at once"""
     with app.app_context():
         leaderboard_files = sorted(glob("./backend/leaderboards/in_time/*"))
@@ -466,71 +542,36 @@ def make_user_pages(usernames):
         # Get latest df for stock information
         latest_df = all_dfs[-1]
 
-        # Process each user using the pre-processed data
-        for player_name in usernames:
-            player_money = []
-            rankings = []
+        # Create event loop and run parallel page generation
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
 
-            # Check if player exists in latest data
-            if player_name not in latest_df["Account Name"].values:
-                continue
+        # Create semaphore to limit concurrent tasks
+        semaphore = asyncio.Semaphore(4)  # Limit to 4 concurrent tasks
 
-            # Extract data for this player from all timepoints
-            for df in all_dfs:
-                if player_name in df["Account Name"].values:
-                    rankings.append(
-                        float(
-                            df.loc[df["Account Name"] == player_name, "Ranking"].values[
-                                0
-                            ]
-                        )
-                    )
-                    player_money.append(
-                        float(
-                            df.loc[
-                                df["Account Name"] == player_name, "Money In Account"
-                            ].values[0]
-                        )
-                    )
+        async def bounded_render(player_name):
+            async with semaphore:
+                return await render_user_page(
+                    player_name,
+                    labels,
+                    all_dfs,
+                    latest_df,
+                    sp500_prices,
+                    tqqq_prices,
+                    nvda_prices,
+                    djt_prices,
+                )
 
-            # Get player details from latest data
-            investopedia_link = latest_df.loc[
-                latest_df["Account Name"] == player_name, "Investopedia Link"
-            ].values[0]
-            player_stocks_data = latest_df.loc[
-                latest_df["Account Name"] == player_name, "Stocks Invested In"
-            ].iloc[0]
+        # Create tasks with semaphore
+        tasks = [bounded_render(player_name) for player_name in usernames]
 
-            # Process stock data
-            player_stocks = [
-                [
-                    stock[0],
-                    float(stock[1].replace("$", "").replace(",", "")),
-                    float(stock[2].replace("%", "")),
-                ]
-                for stock in player_stocks_data
-            ]
+        # Run tasks in parallel
+        completed = loop.run_until_complete(asyncio.gather(*tasks))
+        loop.close()
 
-            # Render template
-            rendered = render_template(
-                "player.html",
-                labels=labels,
-                player_money=player_money,
-                player_name=player_name,
-                investopedia_link=investopedia_link,
-                player_stocks=player_stocks,
-                update_time=datetime.utcnow()
-                .astimezone(ZoneInfo("US/Pacific"))
-                .strftime("%H:%M:%S %m-%d-%Y"),
-                sp500_prices=sp500_prices,
-                tqqq_prices=tqqq_prices,
-                nvda_prices=nvda_prices,
-                djt_prices=djt_prices,
-                zip=zip,
-            )
-
-            with open(f"players/{player_name}.html", "w") as f:
-                f.write(rendered)
+        # Print completion status
+        completed = [c for c in completed if c is not None]
+        print(f"Generated {len(completed)} user pages")
 
 
 if __name__ == "__main__":
