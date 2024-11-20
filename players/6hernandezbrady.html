@@ -46,50 +46,57 @@
 
     </head>
 
-    <body class="bg-background text-foreground">
-        <nav class="uk-navbar-container">
-            <div class="uk-container">
-                <div class="uk-navbar flex items-center justify-between relative">
+    <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+        <nav class="bg-white dark:bg-gray-800 shadow-md">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
                     <!-- Mobile Menu Button -->
-                    <button class="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg" onclick="toggleMobileMenu()">
+                    <button class="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" onclick="toggleMobileMenu()">
                         <div class="w-6 h-6 flex flex-col justify-around">
-                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
-                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
-                            <span class="block w-full h-0.5 bg-gray-600 dark:bg-gray-300"></span>
+                            <span class="block w-full h-0.5 bg-current transition-all"></span>
+                            <span class="block w-full h-0.5 bg-current transition-all"></span>
+                            <span class="block w-full h-0.5 bg-current transition-all"></span>
                         </div>
                     </button>
 
-                    <!-- Logo (always visible) -->
-                    <a href="/" class="uk-navbar-item uk-logo text-2xl font-bold">LelandStocks</a>
+                    <!-- Logo -->
+                    <a href="/" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                        <span class="text-2xl font-bold">LelandStocks</span>
+                    </a>
 
                     <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-4">
-                        <ul class="uk-navbar-nav">
-                            <li><a href="/about.html">About Page</a></li>
-                            <li><a href="/players/teachermiller.html">Teacher Miller's Profile</a></li>
-                        </ul>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="/" class="nav-link">Home</a>
+                        <a href="/about.html" class="nav-link">About</a>
+                        <a href="/players/teachermiller.html" class="nav-link">Teacher Miller</a>
+                        <a href="https://discord.gg/Gk9CwaQf9D" class="nav-link-special" target="_blank">
+                            Join Discord
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
                     </div>
+                </div>
 
-                    <!-- Mobile Navigation -->
-                    <div class="md:hidden">
-                        <div id="mobileNav" class="hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg z-50">
-                            <ul class="uk-nav uk-nav-default py-2">
-                                <li><a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a></li>
-                                <li><a href="https://discord.gg/Gk9CwaQf9D" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Discord Server Link</a></li>
-                                <li><a href="/players/teachermiller.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Teacher Miller's Profile</a></li>
-                            </ul>
-                        </div>
+                <!-- Mobile Navigation -->
+                <div id="mobileNav" class="hidden md:hidden">
+                    <div class="px-2 pt-2 pb-3 space-y-1">
+                        <a href="/" class="mobile-nav-link">Home</a>
+                        <a href="/about.html" class="mobile-nav-link">About</a>
+                        <a href="/players/teachermiller.html" class="mobile-nav-link">Teacher Miller</a>
+                        <a href="https://discord.gg/Gk9CwaQf9D" class="mobile-nav-link-special" target="_blank">
+                            Join Discord
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </nav>
-
-        <script>
-            function toggleMobileMenu() {
-                const mobileNav = document.getElementById('mobileNav');
-                mobileNav.classList.toggle('hidden');
-            }
-        </script>
 
         
 <!-- Player Info Header -->
@@ -109,7 +116,7 @@
             </div>
             <div class="text-left sm:text-right">
                 <p class="text-white/80 text-sm">Last Updated</p>
-                <p class="text-base sm:text-lg">15:15:06 11-20-2024</p>
+                <p class="text-base sm:text-lg">15:17:20 11-20-2024</p>
             </div>
         </div>
     </div>
@@ -482,6 +489,31 @@
     chart.timeScale().fitContent();
 </script>
 
+
+        <style>
+            .nav-link {
+                @apply text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors;
+            }
+            
+            .nav-link-special {
+                @apply flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors;
+            }
+            
+            .mobile-nav-link {
+                @apply block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors;
+            }
+            
+            .mobile-nav-link-special {
+                @apply flex items-center px-3 py-2 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors mt-2;
+            }
+        </style>
+
+        <script>
+            function toggleMobileMenu() {
+                const mobileNav = document.getElementById('mobileNav');
+                mobileNav.classList.toggle('hidden');
+            }
+        </script>
     </body>
 
 </html>
