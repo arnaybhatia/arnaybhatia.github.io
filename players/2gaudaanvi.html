@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title>Player Statistics</title>
+        <title>2gaudaanvi's Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet"
             href="https://unpkg.com/franken-ui@1.1.0/dist/css/core.min.css" />
@@ -92,131 +92,178 @@
         </script>
 
         
-<h1 class="text-center text-4xl"><a href="https://www.investopedia.com/simulator/games/user-portfolio?portfolio=10453457"
-        class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
-        target="_blank">2gaudaanvi</a>'s Statistics</h1>
-
-
-
-<br>
-<p class="text-center text-xl">Last updated 15:00:59 11-20-2024</p>
-<br>
-<div class="flex justify-center">
-    <div class="w-4/5 h-[55vh]" id="chartContainer">
-        <!-- Replace buttons with clickable legend -->
-        <div class="legend flex justify-center mb-2 space-x-4">
-            <div class="legend-item cursor-pointer active"
-                data-series="portfolio">
-                <span class="legend-color"
-                    style="background: rgb(75, 192, 192)"></span>Portfolio
+<!-- Player Info Header -->
+<div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-8 px-4 mb-8">
+    <div class="container mx-auto">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                
+                <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center text-3xl font-bold">
+                    2
+                </div>
+                
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">2gaudaanvi</h1>
+                    <a href="https://www.investopedia.com/simulator/games/user-portfolio?portfolio=10453457" class="text-white/80 hover:text-white underline" target="_blank">View Investopedia Profile →</a>
+                </div>
             </div>
-            <div class="legend-item cursor-pointer active" data-series="sp500">
-                <span class="legend-color"
-                    style="background: rgb(192, 75, 75)"></span>S&P 500
-            </div>
-            <div class="legend-item cursor-pointer" data-series="tqqq">
-                <span class="legend-color"
-                    style="background: rgb(75, 75, 192)"></span>TQQQ
-            </div>
-            <div class="legend-item cursor-pointer" data-series="nvda">
-                <span class="legend-color"
-                    style="background: rgb(0, 192, 0)"></span>NVDA
-            </div>
-            <div class="legend-item cursor-pointer" data-series="djt">
-                <span class="legend-color"
-                    style="background: rgb(192, 192, 0)"></span>DJT
+            <div class="text-right">
+                <p class="text-white/80">Last Updated</p>
+                <p class="text-2xl">15:04:25 11-20-2024</p>
             </div>
         </div>
-        <div id="playerChart"></div>
     </div>
 </div>
-<div class="text-center mt-6 pb-6 space-x-2">
-    <button class="uk-button uk-button-default px-4 py-2" id="resetZoom">Reset Zoom</button>
-    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="1">1D</button>
-    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="7">1W</button>
-    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="30">1M</button>
-    <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="365">1Y</button>
+
+<!-- Performance Metrics -->
+<div class="container mx-auto mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+    <div class="bg-white rounded-lg shadow p-6 transform hover:scale-105 transition-transform">
+        <h3 class="text-gray-500 mb-2">Current Portfolio Value</h3>
+        <p class="text-3xl font-bold">$107,417.09</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6 transform hover:scale-105 transition-transform">
+        <h3 class="text-gray-500 mb-2">Total Return</h3>
+        
+        <p class="text-3xl font-bold text-green-600">
+            +7.42%
+        </p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-6 transform hover:scale-105 transition-transform">
+        <h3 class="text-gray-500 mb-2">Active Positions</h3>
+        <p class="text-3xl font-bold">7</p>
+    </div>
 </div>
 
-<!-- Add stocks table -->
-<div class="flex justify-center mt-10">
-    <div class="w-4/5">
-        <h2 class="text-2xl mb-4">Current Stock Holdings</h2>
-        <table class="w-full border-collapse table-auto">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="border px-4 py-2">Stock Ticker</th>
-                    <th class="border px-4 py-2">Money Invested</th>
-                    <th class="border px-4 py-2">Overall % Change</th>
-                </tr>
-            </thead>
-            <tbody>
+<!-- Chart Section -->
+<div class="container mx-auto px-4 mb-8">
+    <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex flex-col h-[600px]">
+            <!-- Legend -->
+            <div class="legend flex justify-center mb-4 space-x-6 p-2 bg-gray-50 rounded-lg">
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">AAPL</td>
-                    <td class="border px-4 py-2 text-center">$1,145.00</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +1.48%
-                    </td>
-                </tr>
+                <div class="legend-item cursor-pointer active" data-series="portfolio">
+                    <span class="legend-color" style="background: rgb(75, 192, 192)"></span>
+                    Portfolio
+                </div>
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">BLK</td>
-                    <td class="border px-4 py-2 text-center">$2,049.34</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +17.85%
-                    </td>
-                </tr>
+                <div class="legend-item cursor-pointer active" data-series="sp500">
+                    <span class="legend-color" style="background: rgb(192, 75, 75)"></span>
+                    S&amp;P 500
+                </div>
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">CCJ</td>
-                    <td class="border px-4 py-2 text-center">$1,440.25</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +35.08%
-                    </td>
-                </tr>
+                <div class="legend-item cursor-pointer " data-series="tqqq">
+                    <span class="legend-color" style="background: rgb(75, 75, 192)"></span>
+                    TQQQ
+                </div>
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">CLSK</td>
-                    <td class="border px-4 py-2 text-center">$2,800.00</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +16.38%
-                    </td>
-                </tr>
+                <div class="legend-item cursor-pointer " data-series="nvda">
+                    <span class="legend-color" style="background: rgb(0, 192, 0)"></span>
+                    NVDA
+                </div>
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">ORCL</td>
-                    <td class="border px-4 py-2 text-center">$5,722.50</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +38.48%
-                    </td>
-                </tr>
+                <div class="legend-item cursor-pointer " data-series="djt">
+                    <span class="legend-color" style="background: rgb(192, 192, 0)"></span>
+                    DJT
+                </div>
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">QQQ</td>
-                    <td class="border px-4 py-2 text-center">$22,139.48</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +12.09%
-                    </td>
-                </tr>
+            </div>
+            
+            <!-- Chart Container -->
+            <div class="flex-grow" id="chartContainer">
+                <div id="playerChart"></div>
+            </div>
+            
+            <!-- Time Range Controls -->
+            <div class="flex justify-center mt-4 space-x-2">
+                <button class="uk-button uk-button-default px-4 py-2" id="resetZoom">Reset</button>
                 
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">VOO</td>
-                    <td class="border px-4 py-2 text-center">$42,889.10</td>
-                    <td class="border px-4 py-2 text-center
-                        text-green-600">
-                        +5.74%
-                    </td>
-                </tr>
+                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="1">1D</button>
                 
-            </tbody>
-        </table>
+                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="7">1W</button>
+                
+                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="30">1M</button>
+                
+                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="365">1Y</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Holdings Table -->
+<div class="container mx-auto px-4 mb-8">
+    <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-2xl font-bold mb-4">Current Holdings</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Symbol</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Investment</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Return</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">AAPL</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$1,145.00</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +1.48%
+                        </td>
+                    </tr>
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">BLK</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$2,049.34</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +17.85%
+                        </td>
+                    </tr>
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">CCJ</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$1,440.25</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +35.08%
+                        </td>
+                    </tr>
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">CLSK</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$2,800.00</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +16.38%
+                        </td>
+                    </tr>
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">ORCL</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$5,722.50</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +38.48%
+                        </td>
+                    </tr>
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">QQQ</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$22,139.48</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +12.09%
+                        </td>
+                    </tr>
+                    
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">VOO</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right">$42,889.10</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
+                            +5.74%
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -475,58 +522,6 @@
     // Initial fit content
     chart.timeScale().fitContent();
 </script>
-
-<style>
-    .series-toggle {
-        opacity: 0.5;
-        transition: opacity 0.3s ease;
-    }
-    
-    .series-toggle.active {
-        opacity: 1;
-    }
-    
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-        .series-toggle {
-            background-color: #333;
-            color: #fff;
-            border-color: #666;
-        }
-        
-        .series-toggle.active {
-            background-color: #444;
-            border-color: #888;
-        }
-    }
-
-    .legend-item {
-        display: flex;
-        align-items: center;
-        font-size: 12px;
-        opacity: 0.5;
-        transition: opacity 0.3s ease;
-    }
-    
-    .legend-item.active {
-        opacity: 1;
-    }
-    
-    .legend-color {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        margin-right: 4px;
-        border-radius: 2px;
-    }
-    
-    /* Dark mode support for legend */
-    @media (prefers-color-scheme: dark) {
-        .legend-item {
-            color: #fff;
-        }
-    }
-</style>
 
     </body>
 
