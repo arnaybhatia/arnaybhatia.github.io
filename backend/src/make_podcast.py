@@ -20,7 +20,8 @@ tech_debate_config = {
     "dialogue_structure": [
         "Stock Game Introduction",
         "Analysis of the Stock Game",
-        "A look at the prior trends within the stock game"
+        "A look at the prior trends within the stock game",
+        "Deepdive into a trader named Joshua Yan",
         "Future Traders to look out for",
     ],
     "podcast_name": "Quicksilver Podcast",
