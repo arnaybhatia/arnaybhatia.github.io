@@ -9,7 +9,7 @@ import time
 
 import pytz
 from dotenv import load_dotenv
-from make_webpage import make_index_page, make_user_pages
+from make_webpage import make_index_page, make_user_pages, make_about_page
 from make_podcast import generate_podcast_audio
 
 load_dotenv()
@@ -278,6 +278,10 @@ async def main():
         with open("index.html", "w") as file:
             file.write(make_index_page())
 
+        # Update about.html
+        with open("about.html", "w") as file:
+            file.write(make_about_page())
+
         # Read usernames and generate all pages at once
         with open("./backend/portfolios/usernames.txt", "r") as file:
             usernames = [user.strip() for user in file.readlines()]
@@ -286,6 +290,10 @@ async def main():
         # Update index.html
         with open("index.html", "w") as file:
             file.write(make_index_page())
+
+        # Update about.html
+        with open("about.html", "w") as file:
+            file.write(make_about_page())
 
         # Read usernames and generate all pages at once
         with open("./backend/portfolios/usernames.txt", "r") as file:

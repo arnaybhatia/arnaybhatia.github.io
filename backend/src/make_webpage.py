@@ -636,6 +636,13 @@ def make_user_pages(usernames):
                     f.write(rendered)
 
 
+def make_about_page():
+    """Generate the about page HTML"""
+    with app.app_context():
+        rendered = render_template("about.html")
+        return rendered
+
+
 if __name__ == "__main__":
     with app.app_context():
         ### This whole section makes the chart shown at the top of the page!
