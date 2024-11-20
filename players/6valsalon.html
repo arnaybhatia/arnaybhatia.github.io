@@ -109,152 +109,157 @@
             </div>
             <div class="text-right">
                 <p class="text-white/80">Last Updated</p>
-                <p class="text-2xl">15:04:49 11-20-2024</p>
+                <p class="text-2xl">15:08:49 11-20-2024</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Performance Metrics -->
-<div class="container mx-auto mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
-    <div class="bg-white rounded-lg shadow p-6 transform hover:scale-105 transition-transform">
-        <h3 class="text-gray-500 mb-2">Current Portfolio Value</h3>
-        <p class="text-3xl font-bold">$102,484.47</p>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6 transform hover:scale-105 transition-transform">
-        <h3 class="text-gray-500 mb-2">Total Return</h3>
-        
-        <p class="text-3xl font-bold text-green-600">
-            +2.48%
-        </p>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6 transform hover:scale-105 transition-transform">
-        <h3 class="text-gray-500 mb-2">Active Positions</h3>
-        <p class="text-3xl font-bold">6</p>
-    </div>
-</div>
+<!-- Main Grid Layout -->
+<div class="container mx-auto px-4 grid grid-cols-12 gap-4">
+    <!-- Left Panel -->
+    <div class="col-span-3 space-y-4">
+        <!-- Performance Cards -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold mb-4">Portfolio Overview</h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="text-gray-500 text-sm">Current Value</h3>
+                    <p class="text-2xl font-bold">$102,484.47</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="text-gray-500 text-sm">Total Return</h3>
+                    
+                    <p class="text-2xl font-bold text-green-600">
+                        +2.48%
+                    </p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="text-gray-500 text-sm">Active Positions</h3>
+                    <p class="text-2xl font-bold">6</p>
+                </div>
+            </div>
+        </div>
 
-<!-- Chart Section -->
-<div class="container mx-auto px-4 mb-8">
-    <div class="bg-white rounded-lg shadow p-6">
-        <div class="flex flex-col h-[600px]">
-            <!-- Legend -->
-            <div class="legend flex justify-center mb-4 space-x-6 p-2 bg-gray-50 rounded-lg">
-                
-                <div class="legend-item cursor-pointer active" data-series="portfolio">
-                    <span class="legend-color" style="background: rgb(75, 192, 192)"></span>
-                    Portfolio
+        <!-- Holdings Table -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold mb-4">Current Holdings</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Symbol</th>
+                            <th class="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Value</th>
+                            <th class="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Return</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">BA</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right">$14,608</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right text-red-600">
+                                -3.3%
+                            </td>
+                        </tr>
+                        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">NEE</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right">$9,610</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right text-red-600">
+                                -3.0%
+                            </td>
+                        </tr>
+                        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">NFLX</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right">$13,258</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right text-green-600">
+                                +6.0%
+                            </td>
+                        </tr>
+                        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">TSLA</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right">$11,971</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right text-green-600">
+                                +14.3%
+                            </td>
+                        </tr>
+                        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">ULTA</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right">$9,611</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right text-red-600">
+                                -8.2%
+                            </td>
+                        </tr>
+                        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-2 whitespace-nowrap font-medium">WMT</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right">$29,205</td>
+                            <td class="px-4 py-2 whitespace-nowrap text-right text-green-600">
+                                +7.0%
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel (Chart) -->
+    <div class="col-span-9">
+        <div class="bg-white rounded-lg shadow p-6 h-[calc(100vh-12rem)]">
+            <!-- Chart Controls -->
+            <div class="flex items-center justify-between mb-4">
+                <div class="legend flex space-x-4">
+                    
+                    <div class="legend-item cursor-pointer active" data-series="portfolio">
+                        <span class="legend-color" style="background: rgb(75, 192, 192)"></span>
+                        Portfolio
+                    </div>
+                    
+                    <div class="legend-item cursor-pointer active" data-series="sp500">
+                        <span class="legend-color" style="background: rgb(192, 75, 75)"></span>
+                        S&amp;P 500
+                    </div>
+                    
+                    <div class="legend-item cursor-pointer " data-series="tqqq">
+                        <span class="legend-color" style="background: rgb(75, 75, 192)"></span>
+                        TQQQ
+                    </div>
+                    
+                    <div class="legend-item cursor-pointer " data-series="nvda">
+                        <span class="legend-color" style="background: rgb(0, 192, 0)"></span>
+                        NVDA
+                    </div>
+                    
+                    <div class="legend-item cursor-pointer " data-series="djt">
+                        <span class="legend-color" style="background: rgb(192, 192, 0)"></span>
+                        DJT
+                    </div>
+                    
                 </div>
-                
-                <div class="legend-item cursor-pointer active" data-series="sp500">
-                    <span class="legend-color" style="background: rgb(192, 75, 75)"></span>
-                    S&amp;P 500
+                <div class="flex space-x-2">
+                    <button class="uk-button uk-button-default px-3 py-1 text-sm" id="resetZoom">Reset</button>
+                    
+                    <button class="uk-button uk-button-default px-3 py-1 text-sm time-range" data-days="1">1D</button>
+                    
+                    <button class="uk-button uk-button-default px-3 py-1 text-sm time-range" data-days="7">1W</button>
+                    
+                    <button class="uk-button uk-button-default px-3 py-1 text-sm time-range" data-days="30">1M</button>
+                    
+                    <button class="uk-button uk-button-default px-3 py-1 text-sm time-range" data-days="365">1Y</button>
+                    
                 </div>
-                
-                <div class="legend-item cursor-pointer " data-series="tqqq">
-                    <span class="legend-color" style="background: rgb(75, 75, 192)"></span>
-                    TQQQ
-                </div>
-                
-                <div class="legend-item cursor-pointer " data-series="nvda">
-                    <span class="legend-color" style="background: rgb(0, 192, 0)"></span>
-                    NVDA
-                </div>
-                
-                <div class="legend-item cursor-pointer " data-series="djt">
-                    <span class="legend-color" style="background: rgb(192, 192, 0)"></span>
-                    DJT
-                </div>
-                
             </div>
             
             <!-- Chart Container -->
-            <div class="flex-grow" id="chartContainer">
+            <div class="h-[calc(100%-3rem)]" id="chartContainer">
                 <div id="playerChart"></div>
             </div>
-            
-            <!-- Time Range Controls -->
-            <div class="flex justify-center mt-4 space-x-2">
-                <button class="uk-button uk-button-default px-4 py-2" id="resetZoom">Reset</button>
-                
-                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="1">1D</button>
-                
-                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="7">1W</button>
-                
-                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="30">1M</button>
-                
-                <button class="uk-button uk-button-default px-4 py-2 time-range" data-days="365">1Y</button>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Holdings Table -->
-<div class="container mx-auto px-4 mb-8">
-    <div class="bg-white rounded-lg shadow p-6">
-        <h2 class="text-2xl font-bold mb-4">Current Holdings</h2>
-        <div class="overflow-x-auto">
-            <table class="min-w-full">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Symbol</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Investment</th>
-                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Return</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">$14,608.00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-red-600">
-                            -3.34%
-                        </td>
-                    </tr>
-                    
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">NEE</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">$9,610.00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-red-600">
-                            -3.02%
-                        </td>
-                    </tr>
-                    
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">NFLX</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">$13,257.75</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
-                            +6.02%
-                        </td>
-                    </tr>
-                    
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">TSLA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">$11,971.05</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
-                            +14.34%
-                        </td>
-                    </tr>
-                    
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">ULTA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">$9,611.28</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-red-600">
-                            -8.15%
-                        </td>
-                    </tr>
-                    
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">WMT</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">$29,205.30</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-green-600">
-                            +7.01%
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
