@@ -34,8 +34,8 @@
         <!-- Left Panel -->
         <div class="lg:col-span-3 space-y-4 order-2 lg:order-1">
             <!-- Performance Cards -->
-            <div class="bg-white rounded-lg shadow p-4 sm:p-6">
-                <h2 class="text-lg sm:text-xl font-bold mb-4">Portfolio Overview</h2>
+            <div class="bg-card rounded-lg shadow p-4 sm:p-6">
+                <h2 class="text-primary text-lg sm:text-xl font-bold mb-4">Portfolio Overview</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
                     <div class="p-4 bg-gray-50 rounded-lg">
                         <h3 class="text-gray-500 text-sm">Current Value</h3>
@@ -44,20 +44,20 @@
                     <div class="p-4 bg-gray-50 rounded-lg">
                         <h3 class="text-gray-500 text-sm">Total Return</h3>
                         {% set total_return = ((player_money[-1] - 100000) / 100000) * 100 %}
-                        <p class="text-xl sm:text-2xl font-bold {% if total_return >= 0 %}text-green-600{% else %}text-red-600{% endif %}">
+                        <p class="text-xl sm:text-2xl font-bold {% if total_return >= 0 %}text-green-500{% else %}text-red-500{% endif %}">
                             {{ '{:+.2f}%'.format(total_return) }}
                         </p>
                     </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="text-gray-500 text-sm">Active Positions</h3>
-                        <p class="text-xl sm:text-2xl font-bold">{{ player_stocks|length }}</p>
+                    <div class="p-4 bg-secondary rounded-lg">
+                        <h3 class="text-secondary text-sm">Active Positions</h3>
+                        <p class="text-primary text-xl sm:text-2xl font-bold">{{ player_stocks|length }}</p>
                     </div>
                 </div>
             </div>
 
             <!-- Holdings Table -->
-            <div class="bg-white rounded-lg shadow p-4 sm:p-6 overflow-x-auto">
-                <h2 class="text-xl font-bold mb-4">Current Holdings</h2>
+            <div class="bg-card rounded-lg shadow p-4 sm:p-6 overflow-x-auto">
+                <h2 class="text-primary text-xl font-bold mb-4">Current Holdings</h2>
                 <div class="overflow-x-auto">
                     <table class="min-w-full">
                         <thead class="bg-gray-50">
@@ -464,6 +464,4 @@
 
 .uk-button.active {
     @apply bg-blue-50 border-blue-200 text-blue-700;
-}
-</style>
-{% endblock %}
+}</style>{% endblock %}
