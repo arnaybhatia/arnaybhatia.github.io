@@ -132,6 +132,10 @@ def make_index_page():
                 interval="15m",  # Changed from 10m to 15m
             )
             # Convert SP500 index to Pacific time
+            if not sp500.index.tzinfo:
+                sp500.index = sp500.index.tz_localize(
+                    "America/New_York"
+                )  # Localize to NY time
             sp500.index = sp500.index.tz_convert("America/Los_Angeles")
 
         # Second pass to collect data
@@ -300,6 +304,17 @@ def make_index_page():
         df["Money In Account"] = df["Money In Account"].apply(
             lambda x: format_currency(x, currency="USD", locale="en_US")
         )
+
+        # Modify this section to retrieve a single podcast audio file
+        audio_directory = "./data/audio"
+        podcast_file = None
+        if os.path.exists(audio_directory):
+            podcast_files = sorted(glob(os.path.join(audio_directory, "*.mp3")))
+            if podcast_files:
+                podcast_file = os.path.basename(
+                    podcast_files[0]
+                )  # Assuming only one file
+
         # Render the html template as shown here: https://stackoverflow.com/a/56296451
         rendered = render_template(
             "index.html",
@@ -323,6 +338,7 @@ def make_index_page():
             q3_monies=q3_monies,
             stock_cnt=stock_cnt,
             sp500_prices=sp500_prices,  # Add S&P 500 prices
+            podcast_file=podcast_file,  # Pass single file
             zip=zip,
         )
         # print("all done with the index page")

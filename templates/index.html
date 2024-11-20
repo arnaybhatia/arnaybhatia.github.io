@@ -200,6 +200,22 @@
 
 </br>
 
+<!-- Podcast Section -->
+<div class="max-w-2xl mx-auto px-4 w-full mt-8">
+    <h2 class="text-center text-xl mb-4">Latest Podcast</h2>
+    {% if podcast_file %}
+        <div class="mb-4">
+            <p class="text-center">Daily Generated</p>
+            <audio controls class="w-full">
+                <source src="/data/audio/{{ podcast_file }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    {% else %}
+        <p class="text-center">No podcast available at the moment.</p>
+    {% endif %}
+</div>
+
 <!-- Search Container -->
 <div class="max-w-2xl mx-auto px-4 w-full">
     <div id="search">
@@ -207,6 +223,8 @@
             class="w-full p-3 mb-2 border-2 border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition-colors dark:bg-gray-800 dark:border-gray-600 dark:text-white">
     </div>
 </div>
+
+
 
 <table class="w-full" id="rankings">
     <thead class="hidden md:table-header-group">
