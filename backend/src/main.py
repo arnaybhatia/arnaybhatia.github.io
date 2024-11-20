@@ -302,7 +302,10 @@ async def main():
             with open(last_podcast_file, "r") as f:
                 last_update_str = f.read().strip()
                 last_update = datetime.strptime(last_update_str, "%Y-%m-%d").date()
-            if last_update < curr_time.date():
+            if (
+                last_update < curr_time.date()
+                or os.environ.get("FORCE_PODCAST") == "True"
+            ):
                 generate_podcast_audio()
                 with open(last_podcast_file, "w") as f:
                     f.write(curr_time.strftime("%Y-%m-%d"))
