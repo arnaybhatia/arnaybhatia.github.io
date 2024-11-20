@@ -131,11 +131,12 @@
     }
 
     function getChartColors() {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         return {
-            background: isDarkMode() ? '#1a1a1a' : '#ffffff',
-            text: isDarkMode() ? '#ffffff' : '#333333',
-            grid: isDarkMode() ? '#333333' : '#f0f0f0',
-            border: isDarkMode() ? '#4a4a4a' : '#d1d4dc'
+            background: isDark ? '#1f2937' : '#ffffff',
+            text: isDark ? '#f9fafb' : '#111827',
+            grid: isDark ? '#374151' : '#f0f0f0',
+            border: isDark ? '#4b5563' : '#d1d4dc'
         };
     }
 
@@ -387,6 +388,9 @@
     --border-color: #e5e7eb;
     --success-color: #22c55e;
     --danger-color: #ef4444;
+    --button-hover: #f3f4f6;
+    --button-active: #dbeafe;
+    --button-active-text: #1d4ed8;
 }
 
 /* Dark mode styles */
@@ -399,6 +403,9 @@
         --border-color: #374151;
         --success-color: #4ade80;
         --danger-color: #f87171;
+        --button-hover: #374151;
+        --button-active: #1e3a8a;
+        --button-active-text: #bfdbfe;
     }
 
     .bg-white {
@@ -438,6 +445,7 @@
 .legend-item {
     @apply flex items-center px-2 py-1 rounded text-xs sm:text-sm font-medium transition-all;
     opacity: 0.5;
+    color: var(--text-primary);
 }
 
 .legend-item.active {
@@ -463,11 +471,13 @@
 }
 
 .uk-button:hover {
-    background-color: var(--bg-secondary);
+    background-color: var(--button-hover);
 }
 
 .uk-button.active {
-    @apply bg-blue-50 border-blue-200 text-blue-700;
+    background-color: var(--button-active);
+    color: var(--button-active-text);
+    border-color: var(--button-active);
 }
 
 /* Utility classes for text colors */

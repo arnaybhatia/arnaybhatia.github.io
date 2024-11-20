@@ -116,7 +116,7 @@
             </div>
             <div class="text-left sm:text-right">
                 <p class="text-white/80 text-sm">Last Updated</p>
-                <p class="text-base sm:text-lg">15:36:24 11-20-2024</p>
+                <p class="text-base sm:text-lg">15:38:43 11-20-2024</p>
             </div>
         </div>
     </div>
@@ -269,11 +269,12 @@
     }
 
     function getChartColors() {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         return {
-            background: isDarkMode() ? '#1a1a1a' : '#ffffff',
-            text: isDarkMode() ? '#ffffff' : '#333333',
-            grid: isDarkMode() ? '#333333' : '#f0f0f0',
-            border: isDarkMode() ? '#4a4a4a' : '#d1d4dc'
+            background: isDark ? '#1f2937' : '#ffffff',
+            text: isDark ? '#f9fafb' : '#111827',
+            grid: isDark ? '#374151' : '#f0f0f0',
+            border: isDark ? '#4b5563' : '#d1d4dc'
         };
     }
 
