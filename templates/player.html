@@ -378,13 +378,66 @@
 
 {% block styles %}
 <style>
+/* Light mode styles */
+:root {
+    --bg-card: #ffffff;
+    --bg-secondary: #f9fafb;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-card: #1f2937;
+        --bg-secondary: #111827;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+        --border-color: #374151;
+    }
+
+    .bg-white {
+        background-color: var(--bg-card) !important;
+    }
+
+    .bg-gray-50 {
+        background-color: var(--bg-secondary) !important;
+    }
+
+    .text-gray-500 {
+        color: var(--text-secondary) !important;
+    }
+
+    .divide-gray-200 > * + * {
+        border-color: var(--border-color) !important;
+    }
+
+    .hover\:bg-gray-50:hover {
+        background-color: var(--bg-secondary) !important;
+    }
+
+    .shadow {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .uk-button {
+        @apply bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700;
+    }
+
+    .uk-button.active {
+        @apply bg-blue-900 border-blue-800 text-blue-200;
+    }
+}
+
+/* Existing legend styles */
 .legend-item {
     @apply flex items-center px-2 py-1 rounded text-xs sm:text-sm font-medium transition-all;
     opacity: 0.5;
 }
 
 .legend-item.active {
-    @apply bg-gray-100;
+    background-color: var(--bg-secondary);
     opacity: 1;
 }
 
@@ -394,21 +447,19 @@
 
 .legend-text {
     @apply truncate;
+    color: var(--text-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-    .legend-item {
-        @apply text-white;
-    }
-    
-    .legend-item.active {
-        @apply bg-gray-700;
-    }
-}
-
-/* Make the chart controls more compact */
+/* Button styles */
 .uk-button {
-    @apply text-xs sm:text-sm rounded border border-gray-200 hover:bg-gray-50 transition-colors whitespace-nowrap;
+    @apply text-xs sm:text-sm rounded border transition-colors whitespace-nowrap;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    background-color: var(--bg-card);
+}
+
+.uk-button:hover {
+    background-color: var(--bg-secondary);
 }
 
 .uk-button.active {
