@@ -9,7 +9,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex items-center space-x-3">
                 {% if player_name == 'teachermiller' %}
-                <img src="/static/miller.jpg" alt="Mr. Miller" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-white">
+                <img src="/static/miller.jpg" alt="Mr. Miller" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-white player-avatar">
                 {% else %}
                 <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/20 flex items-center justify-center text-xl sm:text-2xl font-bold">
                     {{ player_name[0] | upper }}
@@ -394,6 +394,13 @@
     --label-color: #6b7280;
     --chart-bg: #ffffff;
     --text-label: #374151;  /* Add this line */
+    --card-radius: 1rem;
+    --transition-speed: 0.2s;
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1);
+    --hover-transform: translateY(-4px);
 }
 
 /* Dark mode styles */
@@ -412,6 +419,10 @@
         --label-color: #9ca3af;
         --chart-bg: #1f2937;
         --text-label: #e5e7eb;  /* Add this line */
+        --glass-bg: rgba(0, 0, 0, 0.2);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        --card-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3);
     }
 
     /* Remove this override since we're now using bg-card */
@@ -450,6 +461,22 @@
     .text-sm {
         color: var(--label-color);
     }
+
+    .bg-card {
+        background: var(--glass-bg);
+    }
+
+    .bg-secondary {
+        background: var(--glass-bg);
+    }
+
+    .uk-button {
+        background: var(--glass-bg);
+    }
+
+    .uk-button.active {
+        box-shadow: 0 0 16px rgba(37, 99, 235, 0.4);
+    }
 }
 
 /* Existing legend styles */
@@ -479,16 +506,22 @@
     border-color: var(--border-color);
     color: var(--text-primary);
     background-color: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .uk-button:hover {
     background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .uk-button.active {
     background-color: var(--button-active);
     color: var(--button-active-text);
     border-color: var(--button-active);
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
 }
 
 /* Utility classes for text colors */
@@ -502,10 +535,12 @@
 
 .text-success {
     color: var(--success-color);
+    transition: color 0.3s ease;
 }
 
 .text-danger {
     color: var(--danger-color);
+    transition: color 0.3s ease;
 }
 
 .divide-border {
@@ -528,6 +563,208 @@
     background-color: var(--button-active);
     color: var(--button-active-text);
     border-color: var(--button-active);
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Base styles */
+:root {
+    --card-radius: 1rem;
+    --transition-speed: 0.2s;
+}
+
+/* Card styles */
+.bg-card {
+    border-radius: var(--card-radius);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-card:hover {
+    transform: var(--hover-transform);
+    box-shadow: var(--card-shadow);
+}
+
+/* Portfolio overview cards */
+.bg-secondary {
+    border-radius: 0.75rem;
+    transition: all var(--transition-speed);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-secondary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Table styles */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+}
+
+th {
+    background-color: var(--bg-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--glass-border);
+}
+
+tr {
+    transition: background-color var(--transition-speed);
+}
+
+tr:hover td {
+    background-color: var(--button-hover);
+    background: var(--glass-bg);
+}
+
+td, th {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Chart controls */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.legend-button {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    padding: 0.625rem 1.25rem;
+    font-weight: 500;
+}
+
+.legend-button:hover {
+    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.legend-button.active {
+    background-color: var(--button-active);
+    color: var(--button-active-text);
+    border-color: var(--button-active);
+    background: var(--button-active);
+    border-color: transparent;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+}
+
+.time-range, #resetZoom {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+}
+
+.time-range:hover, #resetZoom:hover {
+    transform: translateY(-1px);
+    background-color: var(--button-hover);
+}
+
+/* Header styles */
+.bg-gradient-to-r {
+    background-image: linear-gradient(135deg, #4f46e5, #2563eb);
+    background-image: linear-gradient(135deg, #4f46e5, #2563eb, #1d4ed8);
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-gradient-to-r::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 60%);
+}
+
+/* Player image/avatar */
+.player-avatar {
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: transform var(--transition-speed);
+    border: 3px solid var(--glass-border);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.player-avatar:hover {
+    transform: scale(1.05);
+    transform: scale(1.1) rotate(5deg);
+    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Better scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    background: var(--glass-bg);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+    background: var(--glass-border);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+    background: var(--text-secondary);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Dark mode refinements */
+@media (prefers-color-scheme: dark) {
+    .bg-card {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .bg-secondary {
+        background-color: rgba(17, 24, 39, 0.6);
+    }
+    
+    .player-avatar {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
 }
 </style>
 {% endblock %}
