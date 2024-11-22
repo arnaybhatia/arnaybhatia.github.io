@@ -125,6 +125,7 @@ def generate_podcast_audio():
         urls=["./backend/leaderboards/weekly_summary.pdf"],
         conversation_config=tech_debate_config,
         llm_model_name="gpt-4o",
+        tts_model="geminimulti",
         api_key_label="OPENAI_API_KEY",
     )
     # Optionally, handle the generated audio_file if needed
