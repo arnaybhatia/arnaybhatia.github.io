@@ -208,6 +208,37 @@
 
         <!-- Right side: Stats -->
         <div class="lg:col-span-4 grid gap-6">
+            <!-- Your Statistics -->
+            <div class="stats-card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Your Statistics</h2>
+                </div>
+                <select id="userSelect" class="w-full p-2 mb-4 border rounded-lg dark:bg-gray-800">
+                    <option value="">Select your username...</option>
+                    {% for name in usernames %}
+                    <option value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <div id="userStats" class="space-y-3 hidden">
+                    <div class="flex justify-between">
+                        <span>Your Ranking</span>
+                        <span class="font-medium" id="userRanking"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Account Value</span>
+                        <span class="font-medium" id="userMoney"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Z-Score</span>
+                        <span class="font-medium" id="userZScore"></span>
+                    </div>
+                    <div class="mt-4">
+                        <span class="font-medium">Your Stocks:</span>
+                        <div id="userStocks" class="mt-2 text-sm"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Summary Statistics -->
             <div class="stats-card">
                 <div class="flex justify-between items-center mb-4 cursor-pointer md:cursor-default" id="summaryHeader">
@@ -719,5 +750,44 @@
         });
     });
 
+// Add this after your existing chart initialization code
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize user selection from localStorage
+    const savedUser = localStorage.getItem('selectedUser');
+    if (savedUser) {
+        document.getElementById('userSelect').value = savedUser;
+        updateUserStats(savedUser);
+    }
+
+    // Handle user selection
+    document.getElementById('userSelect').addEventListener('change', function(e) {
+        const selectedUser = e.target.value;
+        localStorage.setItem('selectedUser', selectedUser);
+        updateUserStats(selectedUser);
+    });
+
+    function updateUserStats(username) {
+        if (!username) {
+            document.getElementById('userStats').classList.add('hidden');
+            return;
+        }
+
+        // Find user data from the rankings table
+        const table = document.getElementById('rankings');
+        const rows = Array.from(table.querySelectorAll('tr'));
+        
+        for (let row of rows) {
+            const cells = row.querySelectorAll('td');
+            if (cells.length && cells[1]?.textContent.includes(username)) {
+                document.getElementById('userRanking').textContent = `#${cells[0].textContent}`;
+                document.getElementById('userMoney').textContent = cells[2].textContent;
+                document.getElementById('userZScore').textContent = cells[4].textContent;
+                document.getElementById('userStocks').textContent = cells[3].textContent || 'No stocks';
+                document.getElementById('userStats').classList.remove('hidden');
+                break;
+            }
+        }
+    }
+});
 </script>
 {% endblock %}
