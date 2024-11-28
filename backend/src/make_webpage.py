@@ -265,7 +265,10 @@ def make_index_page():
             lambda x: ", ".join([stock[0] for stock in x])
         )
         df["Z-Score"] = zscore(df["Money In Account"])
-        # Replace Account Name with Account Link
+        # Extract usernames before modifying the DataFrame
+        usernames = sorted(df['Account Name'].tolist())
+
+        # Create Account Link column
         df["Account Link"] = df.apply(
             lambda row: f'<a href="/players/{row["Account Name"]}.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 {row["Account Name"]}" target="_blank">{row["Account Name"]}</a>',
             axis=1,
@@ -316,9 +319,6 @@ def make_index_page():
                     podcast_files[0]
                 )  # Assuming only one file
 
-        # Get list of usernames for the dropdown - get plain usernames instead of HTML links
-        usernames = sorted(df['Account Name'].tolist())  # Changed from Account Link to Account Name
-
         # Render the html template as shown here: https://stackoverflow.com/a/56296451
         rendered = render_template(
             "index.html",
@@ -343,7 +343,7 @@ def make_index_page():
             stock_cnt=stock_cnt,
             sp500_prices=sp500_prices,  # Add S&P 500 prices
             podcast_file=podcast_file,  # Pass single file
-            usernames=usernames,  # Now passing clean usernames
+            usernames=usernames,  # Now passing the extracted usernames
             zip=zip,
         )
         # print("all done with the index page")
