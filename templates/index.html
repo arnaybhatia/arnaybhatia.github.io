@@ -792,7 +792,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add this right after your existing DOMContentLoaded event listener
     document.addEventListener('DOMContentLoaded', function() {
-        const userData = {{ user_data | tojson }};  // Get user data from Jinja
+        const userData = {{ user_data | tojson | safe }};  // Get user data from Jinja and ensure it's properly escaped
         
         // Handle user selection
         document.getElementById('userSelect').addEventListener('change', function(e) {
@@ -819,12 +819,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Initialize user selection from localStorage
         const savedUser = localStorage.getItem('selectedUser');
-        if (savedUser) {
+        if (savedUser && userData[savedUser]) {
             document.getElementById('userSelect').value = savedUser;
-            const event = new Event('change');
-            document.getElementById('userSelect').dispatchEvent(event);
+            document.getElementById('userSelect').dispatchEvent(new Event('change'));
         }
     });
 
 </script>
-{% endblock %} 
+{% endblock %}
