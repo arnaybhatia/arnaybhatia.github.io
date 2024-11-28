@@ -789,5 +789,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+    // Add this right after your existing DOMContentLoaded event listener
+    document.addEventListener('DOMContentLoaded', function() {
+        const userData = {{ user_data | tojson }};  // Get user data from Jinja
+        
+        // Handle user selection
+        document.getElementById('userSelect').addEventListener('change', function(e) {
+            const selectedUser = e.target.value;
+            const userStats = document.getElementById('userStats');
+            
+            if (!selectedUser) {
+                userStats.classList.add('hidden');
+                return;
+            }
+            
+            const data = userData[selectedUser];
+            if (data) {
+                document.getElementById('userRanking').textContent = `#${data.ranking}`;
+                document.getElementById('userMoney').textContent = data.money;
+                document.getElementById('userZScore').textContent = data.zscore.toFixed(2);
+                document.getElementById('userStocks').textContent = data.stocks || 'No stocks';
+                userStats.classList.remove('hidden');
+                
+                // Save selection to localStorage
+                localStorage.setItem('selectedUser', selectedUser);
+            }
+        });
+        
+        // Initialize user selection from localStorage
+        const savedUser = localStorage.getItem('selectedUser');
+        if (savedUser) {
+            document.getElementById('userSelect').value = savedUser;
+            const event = new Event('change');
+            document.getElementById('userSelect').dispatchEvent(event);
+        }
+    });
+
 </script>
-{% endblock %}
+{% endblock %} 

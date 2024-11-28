@@ -268,6 +268,16 @@ def make_index_page():
         # Extract usernames before modifying the DataFrame
         usernames = sorted(df['Account Name'].tolist())
 
+        # Create a dictionary mapping usernames to their data before dropping Account Name
+        user_data = {}
+        for _, row in df.iterrows():
+            user_data[row['Account Name']] = {
+                'ranking': row['Ranking'],
+                'money': row['Money In Account'],
+                'stocks': row['Stocks Invested In'],
+                'zscore': row['Z-Score']
+            }
+
         # Create Account Link column
         df["Account Link"] = df.apply(
             lambda row: f'<a href="/players/{row["Account Name"]}.html" class= "underline text-blue-600 hover:text-blue-800 visited:text-purple-600 {row["Account Name"]}" target="_blank">{row["Account Name"]}</a>',
@@ -344,6 +354,7 @@ def make_index_page():
             sp500_prices=sp500_prices,  # Add S&P 500 prices
             podcast_file=podcast_file,  # Pass single file
             usernames=usernames,  # Now passing the extracted usernames
+            user_data=user_data,  # Add the user data dictionary
             zip=zip,
         )
         # print("all done with the index page")
