@@ -316,8 +316,8 @@ def make_index_page():
                     podcast_files[0]
                 )  # Assuming only one file
 
-        # Get list of usernames for the dropdown
-        usernames = sorted(df['Account Link'].tolist())
+        # Get list of usernames for the dropdown - get plain usernames instead of HTML links
+        usernames = sorted(df['Account Name'].tolist())  # Changed from Account Link to Account Name
 
         # Render the html template as shown here: https://stackoverflow.com/a/56296451
         rendered = render_template(
@@ -343,7 +343,7 @@ def make_index_page():
             stock_cnt=stock_cnt,
             sp500_prices=sp500_prices,  # Add S&P 500 prices
             podcast_file=podcast_file,  # Pass single file
-            usernames=usernames,  # Add usernames to template context
+            usernames=usernames,  # Now passing clean usernames
             zip=zip,
         )
         # print("all done with the index page")
